@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { dresscode } from '../data'
+import Line from './Line'
 import './pages/Details.css'
 
 // Register ScrollTrigger plugin
@@ -10,6 +11,8 @@ gsap.registerPlugin(ScrollTrigger)
 const DressCode = () => {
   const dressCodeTitleRef = useRef(null)
   const dressCodeContentRef = useRef(null)
+  const category1Ref = useRef(null)
+  const category2Ref = useRef(null)
 
   useEffect(() => {
     // Dress Code Title animation
@@ -25,17 +28,90 @@ const DressCode = () => {
       })
     }
 
-    // Dress Code Content animation
-    if (dressCodeContentRef.current) {
-      ScrollTrigger.create({
-        trigger: dressCodeContentRef.current,
-        start: "top 70%",
-        animation: gsap.fromTo(dressCodeContentRef.current,
-          { opacity: 0, y: 30 },
-          { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }
-        ),
-        toggleActions: "play none none reverse"
-      })
+    // Category 1 animation - animate image and content separately
+    if (category1Ref.current) {
+      const category1Container = category1Ref.current
+      const flexContainer = category1Container.querySelector('.flex.flex-row')
+      if (flexContainer) {
+        const category1Image = flexContainer.querySelector('.dresscode-image-container')
+        const category1Content = Array.from(flexContainer.children).find(child => 
+          child.classList.contains('w-1/2') && child.querySelector('.font-boska')
+        )
+        
+        if (category1Image) {
+          gsap.set(category1Image, { opacity: 0, x: -30 })
+        }
+        if (category1Content) {
+          gsap.set(category1Content, { opacity: 0, x: 30 })
+        }
+        
+        ScrollTrigger.create({
+          trigger: category1Ref.current,
+          start: "top 75%",
+          onEnter: () => {
+            if (category1Image) {
+              gsap.to(category1Image, {
+                opacity: 1,
+                x: 0,
+                duration: 0.8,
+                ease: "power2.out"
+              })
+            }
+            if (category1Content) {
+              gsap.to(category1Content, {
+                opacity: 1,
+                x: 0,
+                duration: 0.8,
+                ease: "power2.out",
+                delay: 0.2
+              })
+            }
+          }
+        })
+      }
+    }
+
+    // Category 2 animation - animate image and content separately
+    if (category2Ref.current) {
+      const category2Container = category2Ref.current
+      const flexContainer = category2Container.querySelector('.flex.flex-row')
+      if (flexContainer) {
+        const category2Image = flexContainer.querySelector('.dresscode-image-container')
+        const category2Content = Array.from(flexContainer.children).find(child => 
+          child.classList.contains('w-1/2') && child.querySelector('.font-boska')
+        )
+        
+        if (category2Image) {
+          gsap.set(category2Image, { opacity: 0, x: 30 })
+        }
+        if (category2Content) {
+          gsap.set(category2Content, { opacity: 0, x: -30 })
+        }
+        
+        ScrollTrigger.create({
+          trigger: category2Ref.current,
+          start: "top 75%",
+          onEnter: () => {
+            if (category2Content) {
+              gsap.to(category2Content, {
+                opacity: 1,
+                x: 0,
+                duration: 0.8,
+                ease: "power2.out"
+              })
+            }
+            if (category2Image) {
+              gsap.to(category2Image, {
+                opacity: 1,
+                x: 0,
+                duration: 0.8,
+                ease: "power2.out",
+                delay: 0.2
+              })
+            }
+          }
+        })
+      }
     }
 
     // Cleanup function
@@ -43,7 +119,8 @@ const DressCode = () => {
       ScrollTrigger.getAll().forEach(trigger => {
         if (trigger.vars && (
           trigger.vars.trigger === dressCodeTitleRef.current ||
-          trigger.vars.trigger === dressCodeContentRef.current
+          trigger.vars.trigger === category1Ref.current ||
+          trigger.vars.trigger === category2Ref.current
         )) {
           trigger.kill()
         }
@@ -52,10 +129,18 @@ const DressCode = () => {
   }, [])
 
   return (
-    <div className="relative">
+    <div className="relative pb-20 sm:pb-24 md:pb-32">
       {/* Dress Code Title */}
       <div ref={dressCodeTitleRef} className="text-center mb-12 sm:mb-16">
         <div>
+          {/* Single Flower 1 Image */}
+          <div className="flex justify-center mb-4">
+            <img 
+              src="/assets/images/graphics/single-flower-1.png" 
+              alt="Flower decoration" 
+              className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 object-contain"
+            />
+          </div>
           <h3 className="relative inline-block px-6 py-3">
             <span 
               className="font-tebranos text-5xl sm:text-6xl md:text-7xl lg:text-8xl inline-block leading-none uppercase dress-code-title-text"
@@ -64,56 +149,132 @@ const DressCode = () => {
             </span>
           </h3>
           {/* General Dress Code Description */}
-          <p className="text-base sm:text-lg font-albert font-thin mt-4 mb-4 dress-code-description">
-            Strictly formal. No slippers, shorts, jeans, tshirt, or white color.
+          <p className="text-base sm:text-lg font-albert font-thin italic dress-code-description">
+            We would love to see you in your
+            formal attire
+            that suits in our color motif
           </p>
+          
+          {/* Dress Code Image */}
+          <div className="flex justify-center mt-6 mb-8">
+            <img 
+              src="/assets/images/dresscode/dressscode.png" 
+              alt="Dress Code" 
+              className="w-[85%] h-auto object-contain"
+            />
+          </div>
         </div>
       </div>
 
       {/* Dress Code Content */}
-      <div ref={dressCodeContentRef} className="max-w-xs sm:max-w-md lg:max-w-3xl w-full mx-auto">
-        {/* Image and Swatches Side by Side */}
-        {dresscode.sections && dresscode.sections.length > 0 && (
-          <div className="flex flex-row items-center justify-center gap-6 sm:gap-8 w-full">
-            {/* Section Image */}
-            <div className="flex-shrink-0 dress-code-image-container">
-              <img 
-                src="/assets/images/dresscode/dress.png" 
-                alt="Dress Code" 
-                className="w-full h-auto object-contain dress-code-image"
-              />
-            </div>
-            
-            {/* Color Palette - Burgundy Red and Black */}
-            {(() => {
-              const dressCodeColors = [
-                { name: "Burgundy Red", hex: "#800020" },
-                { name: "Black", hex: "#000000" },
-                { name: "Dark Burgundy", hex: "#722F37" }
-              ];
-              return (
-                <div className="flex flex-col items-center justify-center flex-shrink-0">
-                  {dressCodeColors.map((color, colorIndex) => (
-                    <div 
-                      key={colorIndex} 
-                      className={`relative group cursor-pointer ${colorIndex > 0 ? 'color-swatch' : ''}`}
-                      title={color.name}
-                    >
-                      <div 
-                        className="w-12 h-12 sm:w-16 sm:h-16 max-w-12 max-h-12 rounded-full border-2 border-white/30 shadow-md transition-transform duration-200 hover:scale-110"
-                        style={{ backgroundColor: color.hex }}
-                      />
-                      {/* Tooltip on hover */}
-                      <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-[#171717] text-white text-xs font-albert rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-10">
-                        {color.name}
+      <div className="flex flex-col lg-custom:flex-row gap-3 lg-custom:gap-4 items-stretch">
+        {/* Principal Sponsors Category */}
+        {dresscode.sections && dresscode.sections[0] && (() => {
+          const section = dresscode.sections[0];
+          return (
+            <div className="relative overflow-visible flex-1">
+              <div className="relative overflow-hidden">
+                <div 
+                  ref={category1Ref}
+                  className="transition-opacity duration-500 ease-in-out"
+                >
+                  {/* Category Image and Details - Side by side on mobile, stacked on 992px+ */}
+                  <div className="flex flex-row lg-custom:flex-col gap-6 md:gap-8 lg-custom:gap-6 items-start">
+                    {/* Category Details - First category: right aligned on mobile, left aligned on 992px+ */}
+                    <div className="w-1/2 lg-custom:w-full flex flex-col text-right lg-custom:text-left order-1 lg-custom:order-2">
+                      {/* Category Name and Description Container */}
+                      <div className="w-full">
+                        {/* Category Name */}
+                        <div className="text-lg sm:text-xl md:text-2xl font-boska text-[#333333] mb-2 text-right lg-custom:text-left">
+                          {section.title}
+                        </div>
+                        
+                        {/* Description */}
+                        {section.description && (
+                          <p className="text-sm sm:text-base font-albert font-thin italic text-[#333333] mb-4 text-right lg-custom:text-left">
+                            {section.description}
+                          </p>
+                        )}
                       </div>
                     </div>
-                  ))}
+                    
+                    {/* Category Image - First category: right on mobile, top on desktop */}
+                    {section.image && (
+                      <div className="w-1/2 lg-custom:w-full order-2 lg-custom:order-1">
+                        <div className="w-full relative dresscode-image-container">
+                          <img 
+                            src={section.image} 
+                            alt={section.title} 
+                            className="w-full h-full object-cover rounded"
+                          />
+                        </div>
+                      </div>
+                    )}
+                  </div>
                 </div>
-              );
-            })()}
-          </div>
+              </div>
+            </div>
+          );
+        })()}
+
+        {/* Vertical Divider - Hidden on mobile, shown on 992px and above */}
+        {dresscode.sections && dresscode.sections.length > 1 && (
+          <>
+            <div className="hidden lg-custom:block w-px bg-[#333333] opacity-40 self-stretch"></div>
+            <div className="lg-custom:hidden w-full">
+              <Line />
+            </div>
+          </>
         )}
+
+        {/* Guests Category */}
+        {dresscode.sections && dresscode.sections[1] && (() => {
+          const section = dresscode.sections[1];
+          return (
+            <div className="relative overflow-visible flex-1">
+              <div className="relative overflow-hidden">
+                <div 
+                  ref={category2Ref}
+                  className="text-center transition-opacity duration-500 ease-in-out"
+                >
+                  {/* Category Image and Details - Side by side on mobile, stacked on 992px+ */}
+                  <div className="flex flex-row lg-custom:flex-col gap-6 md:gap-8 lg-custom:gap-6 items-start">
+                    {/* Category Image - Second category: left on mobile, top on desktop */}
+                    {section.image && (
+                      <div className="w-1/2 lg-custom:w-full">
+                        <div className="w-full relative dresscode-image-container">
+                          <img 
+                            src={section.image} 
+                            alt={section.title} 
+                            className="w-full h-full object-cover rounded"
+                          />
+                        </div>
+                      </div>
+                    )}
+                    
+                    {/* Category Details - Second category: left aligned on mobile, bottom on desktop */}
+                    <div className="w-1/2 lg-custom:w-full flex flex-col justify-between text-left lg-custom:text-left dresscode-image-container">
+                      {/* Category Name and Description Container */}
+                      <div>
+                        {/* Category Name */}
+                        <div className="text-lg sm:text-xl md:text-2xl font-boska text-[#333333] mb-2 text-left lg-custom:text-left">
+                          {section.title}
+                        </div>
+                        
+                        {/* Description */}
+                        {section.description && (
+                          <p className="text-sm sm:text-base font-albert font-thin italic text-[#333333] mb-4 text-left lg-custom:text-left">
+                            {section.description}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        })()}
       </div>
     </div>
   )

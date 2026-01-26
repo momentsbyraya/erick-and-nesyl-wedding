@@ -1,0 +1,32 @@
+{
+  "events": [
+    {
+      "time": "12:30 PM",
+      "description": "Welcoming of Guests",
+      "image": "/assets/images/graphics/welcome-2.png",
+      "imageAlt": "Welcoming of Guests",
+      "position": "left"
+    },
+    {
+      "time": "1:00 PM",
+      "description": "Ceremony",
+      "image": "/assets/images/graphics/ceremony-2.png",
+      "imageAlt": "Ceremony",
+      "position": "right"
+    },
+          {
+            "time": "3:00 PM",
+            "description": "Reception",
+            "image": "/assets/images/graphics/cake-2.png",
+            "imageAlt": "Reception",
+            "position": "left"
+          },
+    {
+      "time": "7:00 PM",
+      "description": "Party Ends",
+      "image": "/assets/images/graphics/car-2.png",
+      "imageAlt": "Party Ends",
+      "position": "right"
+    }
+  ]
+}

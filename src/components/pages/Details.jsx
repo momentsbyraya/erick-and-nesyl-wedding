@@ -263,14 +263,14 @@ const Details = () => {
       data-section="details"
       className="relative pb-20 w-full overflow-hidden bg-white details-section"
     >
-      {/* Prenup Image at Top */}
+      {/* Flower Banner Image at Top */}
       <ImageBanner 
-        src="/assets/images/prenup/prenup-1.png" 
-        alt="Prenup photo"
+        src="/assets/images/graphics/flower-banner.png" 
+        alt="Flower banner"
       />
       
       {/* Content */}
-      <div className="relative z-20 flex items-center justify-center pt-12 pb-12">
+      <div className="relative z-20 flex items-center justify-center pt-12 pb-32">
         <div className="max-w-xs sm:max-w-md lg:max-w-3xl w-full mx-auto">
           {/* Header Section */}
           <div className="text-center">
@@ -287,23 +287,15 @@ const Details = () => {
                   </div>
                 </div>
                 
-      {/* Curved Line Divider */}
-      <div ref={curvedDivider1Ref} className="relative w-full py-8 flex items-center justify-center">
-        <svg 
-          className="w-full h-16 sm:h-20 md:h-24" 
-          viewBox="0 0 1200 100" 
-          preserveAspectRatio="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path 
-            d="M0,50 Q300,20 600,50 T1200,50" 
-            stroke="#800000" 
-            strokeWidth="2" 
-            fill="none"
-            opacity="0.4"
-          />
-        </svg>
-            </div>
+       {/* Flower Divider */}
+       <div ref={curvedDivider1Ref} className="relative w-full h-16 sm:h-20 md:h-24 flex items-center justify-center">
+         <img 
+           src="/assets/images/graphics/flower-divider.png" 
+           alt="Flower divider"
+           className="w-full h-full object-contain"
+           style={{ transform: 'scale(2.5) rotate(5deg)' }}
+         />
+       </div>
 
       {/* Content */}
       <div className="relative z-20 flex items-center justify-center pt-12">
@@ -314,7 +306,7 @@ const Details = () => {
                 </div>
 
       {/* Curved Line Divider */}
-      <div ref={curvedDivider2Ref} className="relative w-full py-8 flex items-center justify-center">
+      {/* <div ref={curvedDivider2Ref} className="relative w-full py-8 flex items-center justify-center">
         <svg 
           className="w-full h-16 sm:h-20 md:h-24" 
           viewBox="0 0 1200 100" 
@@ -323,16 +315,16 @@ const Details = () => {
         >
           <path 
             d="M0,50 Q300,20 600,50 T1200,50" 
-            stroke="#800000" 
+            stroke="#6B8FA3" 
             strokeWidth="2" 
             fill="none"
             opacity="0.4"
           />
         </svg>
-                    </div>
+      </div> */}
                     
       {/* Photo Section */}
-      <div ref={photoSectionRef}>
+      {/* <div ref={photoSectionRef}>
       <PhotoSection
         images={[
           { src: '/assets/images/prenup/prenup-4.jpg', alt: 'Photo 1', label: 'Memories' },
@@ -342,10 +334,10 @@ const Details = () => {
         paragraph="This is where our journey began, a moment captured in time that will forever hold a special place in our hearts."
         backgroundTexts={['Forever', 'Always', 'Together', 'Love', 'Us']}
       />
-              </div>
+      </div> */}
 
       {/* Curved Line Divider */}
-      <div ref={curvedDivider3Ref} className="relative w-full py-8 flex items-center justify-center">
+      {/* <div ref={curvedDivider3Ref} className="relative w-full py-8 flex items-center justify-center">
         <svg 
           className="w-full h-16 sm:h-20 md:h-24" 
           viewBox="0 0 1200 100" 
@@ -354,13 +346,13 @@ const Details = () => {
         >
           <path 
             d="M0,50 Q300,20 600,50 T1200,50" 
-            stroke="#800000" 
+            stroke="#6B8FA3" 
             strokeWidth="2" 
             fill="none"
             opacity="0.4"
           />
         </svg>
-                  </div>
+      </div> */}
 
       {/* Content */}
       <div className="relative z-20 flex items-center justify-center pt-12">
@@ -374,6 +366,19 @@ const Details = () => {
           {/* Photo Upload Section */}
           <PhotoUpload />
         </div>
+      </div>
+
+      {/* Flower Divider - Flipped horizontally and vertically */}
+      <div className="relative w-full h-16 sm:h-20 md:h-24 flex items-center justify-center my-8">
+        <img 
+          src="/assets/images/graphics/flower-divider.png" 
+          alt="Flower divider" 
+          className="w-full h-full object-contain"
+          style={{ 
+            transform: 'scale(2.5) rotate(5deg) scaleX(-1) scaleY(-1)',
+            transformOrigin: 'center'
+          }}
+        />
       </div>
 
       {/* FAQ Section - Outside container */}

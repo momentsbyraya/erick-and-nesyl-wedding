@@ -1,22 +1,22 @@
 {
   "bride": {
-    "firstName": "Praise Joy",
-    "lastName": "Rita",
-    "fullName": "Praise Joy D. Rita"
+    "firstName": "Emmariel",
+    "lastName": "Antonio",
+    "fullName": "EMMARIEL ALFANOSO ANTONIO"
   },
   "groom": {
-    "firstName": "Gil Carlos",
-    "lastName": "Santiago",
-    "fullName": "Gil Carlos T. Santiago"
+    "firstName": "Mark Resty",
+    "lastName": "Derit",
+    "fullName": "MARK RESTY ROYO DERIT"
   },
-  "together": "Jon & Sofia",
-  "nickname": "Jon and Sofia",
+  "together": "Mark Resty & Emmariel",
+  "nickname": "Mark Resty and Emmariel",
   "wedding": {
-    "date": "2026-11-06",
-    "time": "3:30 PM",
-    "dayOfWeek": "Friday",
-    "month": "November",
-    "day": "6",
+    "date": "2026-04-08",
+    "time": "1:00 PM",
+    "dayOfWeek": "Wednesday",
+    "month": "April",
+    "day": "8",
     "year": "2026"
   }
 }

@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { ArrowRight, X } from 'lucide-react'
+import { X } from 'lucide-react'
 import { paymentMethods as paymentMethodsData } from '../data'
 import './pages/Details.css'
 
@@ -41,32 +41,35 @@ const GiftRegistry = () => {
   return (
     <>
       {/* Gift Registry Section */}
-      <div className="mt-20 relative gift-registry-section">
+      <div className="relative gift-registry-section">
         <div ref={giftRegistryRef} className="text-center relative z-10">
-          <h3 className="relative inline-block px-6 py-3 mb-4">
+          {/* Single Flower 2 Image */}
+          <div className="flex justify-center mb-4">
+            <img 
+              src="/assets/images/graphics/single-flower-2.png" 
+              alt="Flower decoration" 
+              className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 object-contain"
+            />
+          </div>
+          <h3 className="relative inline-block px-6 py-3">
             <span 
-              className="font-tebranos text-5xl sm:text-6xl md:text-7xl lg:text-8xl inline-block leading-none uppercase gift-registry-title-text"
+              className="font-tebranos text-5xl sm:text-6xl md:text-7xl lg:text-8xl inline-block leading-none gift-registry-title-text"
+              style={{ fontStyle: 'italic' }}
             >
-              Gift Registry
+              A notes on gifts...
             </span>
           </h3>
-          <p className="text-base sm:text-lg font-albert font-thin text-[#f5f5f0] max-w-3xl mx-auto leading-relaxed">
-            Your presence is our greatest gift. Monetary gifts are appreciated.
+          <div className="w-full max-w-3xl mx-auto mb-4">
+            <div className="w-full h-px bg-[#6B8FA3] opacity-40"></div>
+          </div>
+          <p className="text-base sm:text-lg font-albert font-thin text-[#333333] max-w-3xl mx-auto leading-relaxed text-center">
+            Our hearts are full, our joy is true,<br />
+            This day is brighter shared with you.<br />
+            If you wish to give as we begin,<br />
+            A <strong>monetary gift</strong> would help us win<br />
+            A life together, built with care,<br />
+            With love—and thanks beyond compare.
           </p>
-        </div>
-        
-        {/* Send Gift Button */}
-        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2">
-          <button
-            onClick={() => setIsGiftModalOpen(true)}
-            className="relative flex items-center justify-center hover:opacity-80 transition-all duration-300 group bg-white rounded-lg px-8 py-3 gap-2 gift-button"
-          >
-            <div 
-              className="absolute inset-0 rounded-lg border border-[#800000] pointer-events-none gift-button-border"
-            ></div>
-            <span className="text-[#800000] font-medium text-sm sm:text-base relative z-10">Send Gift</span>
-            <ArrowRight className="w-4 h-4 text-[#800000] relative z-10" />
-          </button>
         </div>
       </div>
 

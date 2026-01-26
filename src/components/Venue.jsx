@@ -35,11 +35,11 @@ const Venue = () => {
     // Venue 1 animation - animate image and content separately
     if (venue1Ref.current) {
       const venue1Container = venue1Ref.current
-      const flexContainer = venue1Container.querySelector('.flex.flex-row')
+      const flexContainer = venue1Container.querySelector('.flex')
       if (flexContainer) {
         const venue1Image = flexContainer.querySelector('.venue-image-container')
         const venue1Content = Array.from(flexContainer.children).find(child => 
-          child.classList.contains('w-1/2') && child.querySelector('.font-boska')
+          (child.classList.contains('w-full') || child.classList.contains('md:w-1/2')) && child.querySelector('.font-boska')
         )
         
         if (venue1Image) {
@@ -78,11 +78,11 @@ const Venue = () => {
     // Venue 2 animation - animate image and content separately
     if (venue2Ref.current) {
       const venue2Container = venue2Ref.current
-      const flexContainer = venue2Container.querySelector('.flex.flex-row')
+      const flexContainer = venue2Container.querySelector('.flex')
       if (flexContainer) {
         const venue2Image = flexContainer.querySelector('.venue-image-container')
         const venue2Content = Array.from(flexContainer.children).find(child => 
-          child.classList.contains('w-1/2') && child.querySelector('.font-boska')
+          (child.classList.contains('w-full') || child.classList.contains('md:w-1/2')) && child.querySelector('.font-boska')
         )
         
         if (venue2Image) {
@@ -154,13 +154,13 @@ const Venue = () => {
               ref={venue1Ref} 
               className="text-center transition-opacity duration-500 ease-in-out"
             >
-              {/* Venue Image and Details - Side by side on mobile, stacked on 992px+ */}
-              <div className="flex flex-row lg-custom:flex-col gap-6 md:gap-8 lg-custom:gap-6 items-start">
+              {/* Venue Image and Details - Stacked on mobile, side by side on 768px-991px, stacked on 992px+ */}
+              <div className="flex flex-col md:flex-row lg-custom:flex-col gap-6 md:gap-8 items-start">
                 {/* Venue Image */}
-                <div className="w-1/2 lg-custom:w-full">
+                <div className="w-full md:w-1/2 lg-custom:w-full">
                   <div className="w-full relative venue-image-container">
                     <img 
-                      src="/assets/images/venues/ceremony.jpg" 
+                      src="/assets/images/venues/ceremony.png" 
                       alt={ceremony.name} 
                       className="w-full h-full object-cover rounded"
                     />
@@ -168,7 +168,7 @@ const Venue = () => {
                 </div>
                 
                 {/* Venue Details */}
-                <div className="w-1/2 lg-custom:w-full flex flex-col justify-between text-left venue-image-container">
+                <div className="w-full md:w-1/2 lg-custom:w-full flex flex-col justify-between text-left">
                   {/* Venue Name and Location Container */}
                   <div>
                     {/* Venue Name */}
@@ -215,19 +215,19 @@ const Venue = () => {
               ref={venue2Ref}
               className="text-center transition-opacity duration-500 ease-in-out"
             >
-              {/* Venue Image and Details - Side by side on mobile, stacked on 992px+ */}
-              <div className="flex flex-row lg-custom:flex-col gap-6 md:gap-8 lg-custom:gap-6 items-start">
-                {/* Venue Details - First on mobile (left), second on desktop (bottom) */}
-                <div className="w-1/2 lg-custom:w-full flex flex-col justify-between text-right lg-custom:text-left venue-image-container order-1 lg-custom:order-2">
+              {/* Venue Image and Details - Stacked on mobile, side by side on 768px-991px, stacked on 992px+ */}
+              <div className="flex flex-col md:flex-row lg-custom:flex-col gap-6 md:gap-8 items-start">
+                {/* Venue Details - First on mobile, first on desktop (left) */}
+                <div className="w-full md:w-1/2 lg-custom:w-full flex flex-col justify-between text-left order-2 md:order-1 lg-custom:order-2">
                   {/* Venue Name and Location Container */}
                   <div>
                     {/* Venue Name */}
-                    <div className="text-lg sm:text-xl md:text-2xl font-boska text-[#333333] mb-2 text-right lg-custom:text-left">
+                    <div className="text-lg sm:text-xl md:text-2xl font-boska text-[#333333] mb-2 text-left">
                       {reception.name}
                     </div>
                     
                      {/* Address */}
-                     <p className="text-sm sm:text-base font-albert font-thin text-[#333333] mb-4 text-right lg-custom:text-left">
+                     <p className="text-sm sm:text-base font-albert font-thin text-[#333333] mb-4 text-left">
                        {reception.address && `${reception.address}, `}
                        {reception.city}
                        {reception.state && `, ${reception.state}`}
@@ -236,7 +236,7 @@ const Venue = () => {
                   </div>
 
                   {/* Google Maps Link Button */}
-                  <div className="flex justify-end lg-custom:justify-start items-center">
+                  <div className="flex justify-start items-center">
                     <SecondaryButton
                       href={reception.googleMapsUrl}
                       target="_blank"
@@ -248,11 +248,11 @@ const Venue = () => {
                   </div>
                 </div>
                 
-                {/* Venue Image - Second on mobile (right), first on desktop (top) */}
-                <div className="w-1/2 lg-custom:w-full order-2 lg-custom:order-1">
+                {/* Venue Image - Second on mobile, second on desktop (right) */}
+                <div className="w-full md:w-1/2 lg-custom:w-full order-1 md:order-2 lg-custom:order-1">
                   <div className="w-full relative venue-image-container">
                     <img 
-                      src="/assets/images/venues/reception.jpg" 
+                      src="/assets/images/venues/reception.png" 
                       alt={reception.name} 
                       className="w-full h-full object-cover rounded"
                     />

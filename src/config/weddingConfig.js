@@ -31,9 +31,9 @@ export const weddingConfig = {
 
   // Theme and Styling
   theme: {
-    primaryColor: "midnight-blue-600",
+    primaryColor: "dusty-blue-600",
     secondaryColor: "silver-500",
-    accentColor: "midnight-blue-600",
+    accentColor: "dusty-blue-600",
     fontFamily: "serif",
     style: "elegant" // Options: elegant, modern, rustic, vintage
   },

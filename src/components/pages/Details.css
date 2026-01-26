@@ -14,7 +14,7 @@
 
 .venue-title-text {
   line-height: 0.8;
-  color: #800000;
+  color: #6B8FA3;
 }
 
 /* Venue Image Container */
@@ -48,7 +48,7 @@
 
 .program-title-text {
   line-height: 0.8;
-  color: #800000;
+  color: #6B8FA3;
   display: block;
   text-align: center;
 }
@@ -60,7 +60,7 @@
 /* Date Selector */
 .date-month-year {
   font-style: italic;
-  color: #800000;
+  color: #6B8FA3;
 }
 
 .heart-day-number {
@@ -83,7 +83,7 @@
 /* Dress Code */
 .dress-code-title-text {
   line-height: 0.8;
-  color: #800000;
+  color: #6B8FA3;
   white-space: nowrap;
 }
 
@@ -109,17 +109,9 @@
 }
 
 /* Gift Registry */
-.gift-registry-section {
-  background-image: url(/assets/images/graphics/bg-3.png);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  padding: 4rem 3rem 6rem 3rem;
-}
-
 .gift-registry-title-text {
   line-height: 0.8;
-  color: #f5f5f0;
+  color: #6B8FA3;
 }
 
 .gift-button {
@@ -132,13 +124,13 @@
 
 /* Upload Section */
 .upload-title {
-  padding-top: 4rem;
+  padding-top: 0.75rem;
   padding-bottom: 0.75rem;
 }
 
 .upload-title-text {
   line-height: 0.8;
-  color: #800000;
+  color: #6B8FA3;
 }
 
 .upload-qr-container {
@@ -163,7 +155,7 @@
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   margin-right: calc(-50vw + 50%);
-  background-color: #800000;
+  background-color: #6B8FA3;
 }
 
 .faq-title-text {

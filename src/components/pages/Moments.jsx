@@ -630,7 +630,7 @@ const Moments = () => {
              {/* Title - Full Width at Top */}
              <div className="relative z-20 w-full" style={{ border: 'none' }}>
                <h2 ref={momentsTitleRef} className="w-full text-center px-4" style={{
-                 backgroundImage: 'url(/assets/images/graphics/teal-2.png)',
+                 backgroundImage: 'url(/assets/images/graphics/bg-3.png)',
                      backgroundSize: 'cover',
                  backgroundPosition: 'center',
                  backgroundRepeat: 'no-repeat',
@@ -673,7 +673,7 @@ const Moments = () => {
              <div 
                className="w-full flex flex-col relative z-10"
                    style={{
-                 backgroundImage: 'url(/assets/images/graphics/teal-2.png)',
+                 backgroundImage: 'url(/assets/images/graphics/bg-3.png)',
                  backgroundSize: '100% 50%',
                  backgroundPosition: 'top center',
                  backgroundRepeat: 'no-repeat',

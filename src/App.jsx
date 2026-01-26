@@ -5,7 +5,7 @@ import NavIndex from './components/NavIndex'
 import Footer from './components/Footer'
 import RSVPModal from './components/RSVPModal'
 import DynamicTitle from './components/DynamicTitle'
-import OpeningScreen from './components/OpeningScreen'
+// import OpeningScreen from './components/OpeningScreen'
 import Loader from './components/Loader'
 // import Watermark from './components/Watermark'
 import ScrollToTop from './components/ScrollToTop'
@@ -16,7 +16,7 @@ import { AudioProvider, useAudio } from './contexts/AudioContext'
 
 function AppContent() {
   const [isRSVPModalOpen, setIsRSVPModalOpen] = useState(false)
-  const [showInvitation, setShowInvitation] = useState(false)
+  const [showInvitation, setShowInvitation] = useState(true) // Set to true to skip opening screen
   const [isLoading, setIsLoading] = useState(true)
   const { play } = useAudio()
   const navigate = useNavigate()
@@ -26,27 +26,21 @@ function AppContent() {
     const preloadImages = async () => {
       const criticalImages = [
         // NavIndex images - all prenup photos used on home page
-        '/assets/images/prenup/APA_0856.JPG',  // Polaroid image
-        '/assets/images/prenup/APA_9774.JPG',  // RSVP container
-        '/assets/images/prenup/APA_0384.JPG',  // Moments polaroid 1
-        '/assets/images/prenup/APA_0141.JPG',  // Moments polaroid 2
+        '/assets/images/prenup/prenup-5.jpg',  // Polaroid image
+        '/assets/images/prenup/prenup-6.jpg',  // RSVP container
+        '/assets/images/prenup/prenup-7.jpg',  // Moments polaroid 1
+        '/assets/images/prenup/prenup-4.jpg',  // Moments polaroid 2
         // NavIndex graphics - all decorative elements
-        '/assets/images/graphics/midnight-blue-envelope.png',
+        '/assets/images/graphics/dusty-blue.png',
         '/assets/images/graphics/flower-1.png',
         '/assets/images/graphics/flower-3.png',
         '/assets/images/graphics/flower-4.png',
         '/assets/images/graphics/flower-5.png',
         '/assets/images/graphics/flower-7.png',
         '/assets/images/graphics/flower-8.png',
-        '/assets/images/graphics/teal-2.png',
+        '/assets/images/graphics/textured-bg-1.png',
         '/assets/images/graphics/textured-bg-2.png',
-        '/assets/images/graphics/bg-1.png',
-        // OpeningScreen images
-        '/assets/images/graphics/stamp.png',
-        '/assets/images/graphics/cutlery-sketch.png',
-        '/assets/images/graphics/ring-sketch.png',
-        // Video background
-        '/assets/images/videos/video-bg.mp4'
+        '/assets/images/graphics/bg-1.png'
       ]
 
       // Preload fonts
@@ -141,11 +135,11 @@ function AppContent() {
         </div>
       )}
       {/* OpeningScreen - shows after loading, before invitation */}
-      {!isLoading && !showInvitation && (
+      {/* {!isLoading && !showInvitation && (
         <OpeningScreen onEnvelopeOpen={handleEnvelopeOpen} />
-      )}
+      )} */}
       {/* Main content - shows after invitation is opened */}
-      {!isLoading && showInvitation && (
+      {!isLoading && (
         <>
           <Routes>
             <Route path="/" element={<NavIndex onOpenRSVP={() => setIsRSVPModalOpen(true)} />} />

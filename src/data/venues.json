@@ -1,25 +1,25 @@
 {
   "ceremony": {
-    "name": "San Agustin Church",
-    "address": "General Luna St",
-    "city": "Intramuros",
-    "state": "Manila",
-    "zip": "1002, Philippines",
-    "time": "3:30 PM",
-    "details": "Schedule: 3:30 PM to 4:30 PM",
-    "googleMapsUrl": "https://maps.app.goo.gl/SanAgustinChurch",
-    "directionsUrl": "https://maps.app.goo.gl/SanAgustinChurch"
+    "name": "Basilica of the National Shrine of Our Lady of Mount Carmel Cathedral",
+    "address": "020 Broadway Ave",
+    "city": "New Manila, Quezon City",
+    "state": "Metro Manila",
+    "zip": "Philippines",
+    "time": "1:00 PM",
+    "details": "Schedule: 1:00 PM",
+      "googleMapsUrl": "https://maps.app.goo.gl/nmHddmKZXFpzAYgdA",
+      "directionsUrl": "https://maps.app.goo.gl/nmHddmKZXFpzAYgdA"
   },
   "reception": {
-    "name": "Villa Escudero Gardens",
-    "address": "San Pablo City", 
-    "city": "Quezon",
-    "state": "Laguna",
-    "zip": "4000, Philippines",
+    "name": "Glass Garden Events Venue",
+    "address": "257 Evangelista Ave. Santolan", 
+    "city": "Pasig",
+    "state": "Metro Manila",
+    "zip": "1610, Philippines",
     "time": "5:00 PM",
     "details": "Schedule: 5:00 PM to 10:00 PM",
-    "landmark": "Garden Reception",
-    "googleMapsUrl": "https://maps.app.goo.gl/VillaEscudero",
-    "directionsUrl": "https://maps.app.goo.gl/VillaEscudero"
+    "landmark": "Events Venue",
+      "googleMapsUrl": "https://maps.app.goo.gl/DUmtDz9n3LpeR8kb8",
+      "directionsUrl": "https://maps.app.goo.gl/DUmtDz9n3LpeR8kb8"
   }
-} 
+}

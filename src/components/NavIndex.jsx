@@ -207,7 +207,7 @@ const NavIndex = ({ onOpenRSVP }) => {
           {/* Midnight Blue Envelope Image */}
         <div ref={envelopeRef} className="flex justify-center relative envelope-container">
           <img 
-            src="/assets/images/graphics/red.png" 
+            src="/assets/images/graphics/dusty-blue.png" 
             alt="Wedding Invitation" 
             className="w-[60vw] h-auto object-contain"
           />

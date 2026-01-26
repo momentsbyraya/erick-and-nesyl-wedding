@@ -1,36 +1,20 @@
 {
   "mainDressCode": {
-    "title": "Dress Code",
-    "description": "Strictly formal. No slippers, shorts, jeans, tshirt, or white color. Colors: brown, black, teal green, blue, gray, or beige only."
+    "title": "Attire Guide",
+    "description": "WE WOULD LOVE TO SEE YOU IN YOUR FORMAL ATTIRE THAT SUITS IN OUR COLOR MOTIF"
   },
   "sections": [
     {
-      "title": "FORMAL ATTIRE",
+      "title": "Principal Sponsors",
+      "type": "text",
+      "description": "Black suit with navy blue tie for Ninongs, while navy blue long formal gown for Ninangs.",
+      "image": "/assets/images/dresscode/sponsors.png"
+    },
+    {
+      "title": "Guests",
       "type": "image",
-      "image": "/assets/images/dresscode/blue.png",
-      "description": "Strictly formal. No slippers, shorts, jeans, tshirt, or white color. Colors: brown, black, teal green, blue, gray, or beige only.",
-      "colors": [
-        {
-          "name": "Brown",
-          "hex": "#8B4513"
-        },
-        {
-          "name": "Black",
-          "hex": "#000000"
-        },
-        {
-          "name": "Teal Green",
-          "hex": "#008080"
-        },
-        {
-          "name": "Blue Gray",
-          "hex": "#708090"
-        },
-        {
-          "name": "Beige",
-          "hex": "#D2B48C"
-        }
-      ]
+      "description": "For men, wear formal or casual suit with necktie or bow tie. For the ladies, wear formal or casual gown.",
+      "image": "/assets/images/dresscode/guests.png"
     }
   ]
-} 
+}

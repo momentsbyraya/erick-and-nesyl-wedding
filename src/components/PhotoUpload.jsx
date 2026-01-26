@@ -36,7 +36,7 @@ const PhotoUpload = () => {
   }, [])
 
   return (
-    <div className="mt-20 relative">
+    <div className="mt-20 relative pb-12 sm:pb-16">
       <div className="relative overflow-visible">
         <div className="relative overflow-hidden">
           <div 
@@ -45,6 +45,14 @@ const PhotoUpload = () => {
           >
             {/* Upload Title */}
             <div>
+              {/* Single Flower 3 Image */}
+              <div className="flex justify-center mb-4">
+                <img 
+                  src="/assets/images/graphics/single-flower-3.png" 
+                  alt="Flower decoration" 
+                  className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 object-contain"
+                />
+              </div>
               <h3 className="relative inline-block px-6 upload-title">
                 <span 
                   className="font-tebranos text-5xl sm:text-6xl md:text-7xl lg:text-8xl inline-block leading-none uppercase upload-title-text"
@@ -79,7 +87,7 @@ const PhotoUpload = () => {
                 {/* Upload Button */}
                 <div className="flex justify-start lg-custom:justify-center items-center">
                   <SecondaryButton
-                    href="https://drive.google.com/drive/folders/1wEU4WKIRjYC0o5t3NlnNiboQUNmH5nN_?usp=sharing"
+                    href="https://drive.google.com/drive/folders/1FJYHnDzY0zNlWEzdcjwjOot7tGcp2Y01?usp=sharing"
                     target="_blank"
                     rel="noopener noreferrer"
                     icon={ArrowRight}

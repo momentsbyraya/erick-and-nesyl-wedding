@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { couple } from '../data'
+import { couple, schedule as scheduleData } from '../data'
 import './pages/Details.css'
 
 // Register ScrollTrigger plugin
@@ -231,89 +231,42 @@ const Schedule = () => {
 
         {/* Timeline Events */}
         <div ref={eventsRef} className="space-y-12 sm:space-y-16 md:space-y-20 lg:space-y-24">
-          {/* Event 1 - Welcoming of Guests */}
-          <div className="flex items-center relative min-h-[60px]">
-            <div className="w-1/2 pr-6 text-right flex flex-col justify-center">
-              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl alice-regular mb-1 timeline-event-time">
-                3:30 PM
-              </div>
-              <div className="border-b border-dashed border-[#666666] opacity-50 mb-1"></div>
-              <div className="text-sm sm:text-base md:text-lg font-albert timeline-event-description">
-                Welcoming of Guests
-              </div>
-            </div>
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-[#666666] rounded-full z-10"></div>
-            <div className="w-1/2 pl-6 text-left flex items-center justify-start">
-              <img 
-                src="/assets/images/graphics/welcome-2.png" 
-                alt="Welcoming of Guests" 
-                className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-contain"
-              />
-            </div>
-          </div>
-
-          {/* Event 2 - Ceremony */}
-          <div className="flex items-center relative min-h-[60px]">
-            <div className="w-1/2 pr-6 text-right flex items-center justify-end">
-              <img 
-                src="/assets/images/graphics/ceremony-2.png" 
-                alt="Ceremony" 
-                className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-contain"
-              />
-            </div>
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-[#666666] rounded-full z-10"></div>
-            <div className="w-1/2 pl-6 text-left flex flex-col justify-center">
-              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl alice-regular mb-1 timeline-event-time">
-                4:00 PM
-              </div>
-              <div className="border-b border-dashed border-[#666666] opacity-50 mb-1"></div>
-              <div className="text-sm sm:text-base md:text-lg font-albert timeline-event-description">
-                Ceremony
-              </div>
-            </div>
-          </div>
-
-          {/* Event 3 - Reception */}
-          <div className="flex items-center relative min-h-[60px]">
-            <div className="w-1/2 pr-6 text-right flex flex-col justify-center">
-              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl alice-regular mb-1 timeline-event-time">
-                5:00 PM
-              </div>
-              <div className="border-b border-dashed border-[#666666] opacity-50 mb-1"></div>
-              <div className="text-sm sm:text-base md:text-lg font-albert timeline-event-description">
-                Reception
-              </div>
-            </div>
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-[#666666] rounded-full z-10"></div>
-            <div className="w-1/2 pl-6 text-left flex items-center justify-start">
-              <img 
-                src="/assets/images/graphics/cake-2.png" 
-                alt="Reception" 
-                className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-contain"
-              />
-            </div>
-          </div>
-
-          {/* Event 4 - Party Ends */}
-          <div className="flex items-center relative min-h-[60px]">
-            <div className="w-1/2 pr-6 text-right flex items-center justify-end">
-              <img 
-                src="/assets/images/graphics/car-2.png" 
-                alt="Party Ends" 
-                className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-contain"
-              />
-            </div>
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-[#666666] rounded-full z-10"></div>
-            <div className="w-1/2 pl-6 text-left flex flex-col justify-center">
-              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl alice-regular mb-1 timeline-event-time">
-                7:00 PM
-              </div>
-              <div className="border-b border-dashed border-[#666666] opacity-50 mb-1"></div>
-              <div className="text-sm sm:text-base md:text-lg font-albert timeline-event-description">
-                Party Ends
-              </div>
-            </div>
-          </div>
+           {scheduleData.events.map((event, index) => {
+             const isLeft = event.position === 'left'
+             return (
+               <div key={index} className="flex items-center relative min-h-[60px]">
+                 {isLeft ? (
+                   <>
+                     <div className="w-1/2 pr-6 text-right flex flex-col justify-center">
+                       <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl alice-regular mb-1 timeline-event-time">
+                         {event.time}
+                       </div>
+                       <div className="border-b border-dashed border-[#666666] opacity-50 mb-1"></div>
+                       <div className="text-sm sm:text-base md:text-lg font-albert timeline-event-description">
+                         {event.description}
+                       </div>
+                     </div>
+                     <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-[#666666] rounded-full z-10"></div>
+                     <div className="w-1/2 pl-6 text-left"></div>
+                   </>
+                 ) : (
+                   <>
+                     <div className="w-1/2 pr-6 text-right"></div>
+                     <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-[#666666] rounded-full z-10"></div>
+                     <div className="w-1/2 pl-6 text-left flex flex-col justify-center">
+                       <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl alice-regular mb-1 timeline-event-time">
+                         {event.time}
+                       </div>
+                       <div className="border-b border-dashed border-[#666666] opacity-50 mb-1"></div>
+                       <div className="text-sm sm:text-base md:text-lg font-albert timeline-event-description">
+                         {event.description}
+                       </div>
+                     </div>
+                   </>
+                 )}
+               </div>
+             )
+           })}
         </div>
       </div>
     </div>
