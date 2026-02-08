@@ -76,11 +76,41 @@ const SaveTheDateCounter = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full py-16 sm:py-20 md:py-24 lg:py-32 bg-white"
+      className="relative w-full py-8 sm:py-12 md:py-16 lg:py-20"
+      style={{
+        backgroundImage: 'url(/assets/images/prenup/prenup-4.jpg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
     >
-      <div className="max-w-xs sm:max-w-md lg:max-w-3xl w-full mx-auto px-4 sm:px-6 md:px-8">
+      {/* SVG Overlay at Top */}
+      <svg className="absolute top-0 left-0 w-full h-32 sm:h-40 md:h-48 z-10 pointer-events-none" preserveAspectRatio="none" viewBox="0 0 1200 200" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="topGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="rgba(255, 255, 255, 0.9)" />
+            <stop offset="50%" stopColor="rgba(255, 255, 255, 0.5)" />
+            <stop offset="100%" stopColor="rgba(255, 255, 255, 0)" />
+          </linearGradient>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#topGradient)" />
+      </svg>
+
+      {/* SVG Overlay at Bottom */}
+      <svg className="absolute bottom-0 left-0 w-full h-32 sm:h-40 md:h-48 z-10 pointer-events-none" preserveAspectRatio="none" viewBox="0 0 1200 200" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="bottomGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="rgba(255, 255, 255, 0)" />
+            <stop offset="50%" stopColor="rgba(255, 255, 255, 0.5)" />
+            <stop offset="100%" stopColor="rgba(255, 255, 255, 0.9)" />
+          </linearGradient>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#bottomGradient)" />
+      </svg>
+
+      <div className="relative z-20 max-w-xs sm:max-w-md lg:max-w-3xl w-full mx-auto px-4 sm:px-6 md:px-8 flex flex-col justify-between min-h-[400px] sm:min-h-[500px] md:min-h-[600px]">
         {/* Title */}
-        <div className="text-center mb-8 sm:mb-12">
+        <div className="text-center">
           <h2
             ref={titleRef}
             className="font-foglihten text-3xl sm:text-4xl md:text-5xl lg:text-6xl capitalize"
@@ -88,9 +118,6 @@ const SaveTheDateCounter = () => {
           >
             Save The Date
           </h2>
-          <p className="text-sm sm:text-base md:text-lg font-albert mt-4" style={{ color: themeConfig.text.lightBlack }}>
-            {formatDate()}
-          </p>
         </div>
 
         {/* Countdown Timer */}

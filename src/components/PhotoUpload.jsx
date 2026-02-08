@@ -45,10 +45,10 @@ const PhotoUpload = () => {
           >
             {/* Upload Title */}
             <div>
-              {/* Single Flower 3 Image */}
+              {/* Single Flower 2 Image */}
               <div className="flex justify-center mb-4">
                 <img 
-                  src="/assets/images/graphics/single-flower-3.png" 
+                  src="/assets/images/graphics/single-flower-2.png" 
                   alt="Flower decoration" 
                   className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 object-contain"
                 />
@@ -87,7 +87,7 @@ const PhotoUpload = () => {
                 {/* Upload Button */}
                 <div className="flex justify-start lg-custom:justify-center items-center">
                   <SecondaryButton
-                    href="https://drive.google.com/drive/folders/1FJYHnDzY0zNlWEzdcjwjOot7tGcp2Y01?usp=sharing"
+                    href="https://drive.google.com/drive/folders/14m2Rlxcuv1RA91gJhROGJxZhRHCRJYE2?usp=drive_link"
                     target="_blank"
                     rel="noopener noreferrer"
                     icon={ArrowRight}

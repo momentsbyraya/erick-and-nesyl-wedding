@@ -25,6 +25,8 @@ function AppContent() {
   useEffect(() => {
     const preloadImages = async () => {
       const criticalImages = [
+        // Hero image - most important
+        '/assets/images/prenup/prenup-1.png',  // Hero image
         // NavIndex images - all prenup photos used on home page
         '/assets/images/prenup/prenup-5.jpg',  // Polaroid image
         '/assets/images/prenup/prenup-6.jpg',  // RSVP container
@@ -104,6 +106,64 @@ function AppContent() {
       // Additional delay to ensure browser has processed all resources
       // This helps prevent lag when NavIndex first renders
       await new Promise(resolve => setTimeout(resolve, 300))
+
+      // Wait for hero image to be visible in the viewport
+      const waitForHeroVisible = () => {
+        return new Promise((resolve) => {
+          const checkHero = () => {
+            // Check if we're on the home page
+            if (window.location.pathname === '/' || window.location.pathname === '') {
+              // Look for hero image
+              const heroImg = document.querySelector('img[src="/assets/images/prenup/prenup-1.png"]')
+              if (heroImg) {
+                // Check if image is loaded and visible
+                if (heroImg.complete && heroImg.naturalHeight > 0) {
+                  // Use Intersection Observer to check if hero is visible
+                  const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                      if (entry.isIntersecting) {
+                        observer.disconnect()
+                        resolve()
+                      }
+                    })
+                  }, { threshold: 0.1 })
+                  
+                  observer.observe(heroImg)
+                  
+                  // Fallback timeout
+                  setTimeout(() => {
+                    observer.disconnect()
+                    resolve()
+                  }, 2000)
+                } else {
+                  // Image not loaded yet, wait for load event
+                  heroImg.onload = () => {
+                    setTimeout(() => resolve(), 100)
+                  }
+                  heroImg.onerror = () => resolve() // Resolve even on error
+                  setTimeout(() => resolve(), 2000) // Fallback timeout
+                }
+              } else {
+                // Hero image not found, resolve anyway
+                resolve()
+              }
+            } else {
+              // Not on home page, resolve immediately
+              resolve()
+            }
+          }
+          
+          // Wait a bit for DOM to be ready
+          if (document.readyState === 'complete') {
+            checkHero()
+          } else {
+            window.addEventListener('load', checkHero)
+            setTimeout(() => resolve(), 3000) // Fallback timeout
+          }
+        })
+      }
+
+      await waitForHeroVisible()
 
       // Hide loader
       setIsLoading(false)

@@ -4,6 +4,7 @@ import Venue from './Venue'
 import Schedule from './Schedule'
 import EntourageSection from './EntourageSection'
 import RSVPSection from './RSVPSection'
+import LoveStory from './LoveStory'
 import DressCode from './DressCode'
 import PhotoUpload from './PhotoUpload'
 import FAQ from './FAQ'
@@ -17,39 +18,35 @@ const Home = ({ onOpenRSVP }) => {
       {/* Hero Section */}
       <Hero />
 
-      {/* Flower Divider */}
-      <div className="relative w-full h-16 sm:h-20 md:h-24 flex items-center justify-center">
+      {/* Flower Banner - Top */}
+      <div className="relative" style={{ width: '100vw' }}>
         <img 
-          src="/assets/images/graphics/flower-divider.png" 
-          alt="Flower divider"
-          className="w-full h-full object-contain"
-          style={{ transform: 'scale(2.5) rotate(5deg)' }}
+          src="/assets/images/graphics/flower-banner-2.png" 
+          alt="Flower banner"
+          className="w-full h-auto object-contain"
         />
       </div>
 
       {/* Content */}
-      <div className="relative z-20 flex items-center justify-center pt-12 sm:pt-16 md:pt-20 pb-32">
+      <div className="relative z-20 flex items-center justify-center pt-12 sm:pt-16 md:pt-20 pb-12 sm:pb-16 md:pb-20">
         <div className="max-w-xs sm:max-w-md lg:max-w-3xl w-full mx-auto">
           {/* Venue Section */}
           <Venue />
         </div>
       </div>
 
-      {/* Flower Divider - Flipped */}
-      <div className="relative w-full h-16 sm:h-20 md:h-24 flex items-center justify-center">
+      {/* Flower Banner - Bottom */}
+      <div className="relative" style={{ width: '100vw' }}>
         <img 
-          src="/assets/images/graphics/flower-divider.png" 
-          alt="Flower divider" 
-          className="w-full h-full object-contain"
-          style={{ 
-            transform: 'scale(2.5) rotate(-5deg) scaleY(-1)',
-            transformOrigin: 'center'
-          }}
+          src="/assets/images/graphics/flower-banner-2.png" 
+          alt="Flower banner"
+          className="w-full h-auto object-contain"
+          style={{ transform: 'scaleY(-1)' }}
         />
       </div>
 
       {/* Content */}
-      <div className="relative z-20 flex items-center justify-center pt-12">
+      <div className="relative z-20 flex items-center justify-center">
         <div className="max-w-xs sm:max-w-md lg:max-w-3xl w-full mx-auto">
           {/* Schedule Section */}
           <Schedule />
@@ -59,30 +56,20 @@ const Home = ({ onOpenRSVP }) => {
       {/* Entourage Section */}
       <EntourageSection />
 
-      {/* Flower Divider - Flipped */}
-      <div className="relative w-full h-16 sm:h-20 md:h-24 flex items-center justify-center my-8">
-        <img 
-          src="/assets/images/graphics/flower-divider.png" 
-          alt="Flower divider" 
-          className="w-full h-full object-contain"
-          style={{ 
-            transform: 'scale(2.5) rotate(5deg) scaleX(-1) scaleY(-1)',
-            transformOrigin: 'center'
-          }}
-        />
-      </div>
-
       {/* Content */}
       <div className="relative z-20 flex items-center justify-center pt-12">
         <div className="max-w-xs sm:max-w-md lg:max-w-3xl w-full mx-auto">
           {/* Dress Code Section */}
           <DressCode />
 
-          {/* Photo Upload Section (Oh Snap) */}
-          <PhotoUpload />
-
           {/* RSVP Section */}
           <RSVPSection onOpenRSVP={onOpenRSVP} />
+
+          {/* Love Story Section */}
+          <LoveStory />
+
+          {/* Photo Upload Section (Oh Snap) */}
+          <PhotoUpload />
         </div>
       </div>
 
@@ -91,11 +78,6 @@ const Home = ({ onOpenRSVP }) => {
 
       {/* Save The Date Counter Section */}
       <SaveTheDateCounter />
-
-      {/* Graphics with horizontal lines */}
-      <div className="mt-12 relative z-20">
-        <Divider />
-      </div>
     </div>
   )
 }

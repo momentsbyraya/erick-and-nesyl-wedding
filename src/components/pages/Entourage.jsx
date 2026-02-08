@@ -4,6 +4,7 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ArrowLeft } from 'lucide-react'
 import { entourage, couple } from '../../data'
+import { themeConfig } from '../../config/themeConfig'
 import './Entourage.css'
 
 // Register ScrollTrigger plugin
@@ -464,10 +465,10 @@ const Entourage = () => {
                 <div className="flex flex-col items-center justify-center">
                   {/* Groom's Name */}
                   <div>
-                    <p className="font-tebranos text-4xl sm:text-5xl md:text-6xl lg:text-7xl uppercase leading-tight" style={{ color: '#006666' }}>
+                    <p className="font-tebranos text-4xl sm:text-5xl md:text-6xl lg:text-7xl uppercase leading-tight" style={{ color: '#CC5500' }}>
                       {couple.groom.firstName}
                     </p>
-                    <p className="font-ballet text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight -mt-4" style={{ color: '#006666' }}>
+                    <p className="font-ballet text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight -mt-4" style={{ color: themeConfig.text.light }}>
                       {couple.groom.lastName}
                     </p>
                   </div>
@@ -476,10 +477,10 @@ const Entourage = () => {
                   </p>
                   {/* Bride's Name */}
                   <div>
-                    <p className="font-tebranos text-4xl sm:text-5xl md:text-6xl lg:text-7xl uppercase leading-tight" style={{ color: '#006666' }}>
+                    <p className="font-tebranos text-4xl sm:text-5xl md:text-6xl lg:text-7xl uppercase leading-tight" style={{ color: '#CC5500' }}>
                       {couple.bride.firstName}
                     </p>
-                    <p className="font-ballet text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight -mt-4" style={{ color: '#006666' }}>
+                    <p className="font-ballet text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight -mt-4" style={{ color: themeConfig.text.light }}>
                       {couple.bride.lastName}
                     </p>
                   </div>

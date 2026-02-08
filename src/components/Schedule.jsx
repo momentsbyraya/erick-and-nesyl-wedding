@@ -76,7 +76,7 @@ const Schedule = () => {
   }, [])
 
   return (
-    <div className="relative program-section">
+    <div className="relative program-section bg-[#CC5500]">
       {/* Program Title */}
       <div ref={scheduleTitleRef} className="relative z-10 mb-12 sm:mb-16 program-title-container">
         <h3 className="px-6 py-3">
@@ -86,15 +86,15 @@ const Schedule = () => {
             Order of Events
           </span>
         </h3>
-        <p className="text-sm sm:text-base md:text-lg font-albert text-[#333333] text-center mt-4 mx-auto px-4 program-description">
+        <p className="text-sm sm:text-base md:text-lg font-albert text-[#f5f5f0] text-center mt-4 mx-auto px-4 program-description">
           Join us as we celebrate this special day together
         </p>
       </div>
 
       {/* Vertical Timeline */}
       <div ref={timelineRef} className="relative max-w-md sm:max-w-xl lg:max-w-2xl w-full mx-auto z-10 timeline-container">
-        {/* Central Vertical Line - Dark Grey */}
-        <div ref={lineRef} className="absolute left-1/2 top-0 bottom-0 w-px bg-[#666666] transform -translate-x-1/2"></div>
+        {/* Central Vertical Line - Light Grey */}
+        <div ref={lineRef} className="absolute left-1/2 top-0 bottom-0 w-px bg-[#f5f5f0] opacity-50 transform -translate-x-1/2"></div>
 
         {/* Timeline Events */}
         <div ref={eventsRef} className="space-y-12 sm:space-y-16 md:space-y-20 lg:space-y-24">
@@ -108,23 +108,23 @@ const Schedule = () => {
               <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl alice-regular mb-1 timeline-event-time">
                          {event.time}
               </div>
-              <div className="border-b border-dashed border-[#666666] opacity-50 mb-1"></div>
+              <div className="border-b border-dashed border-[#f5f5f0] opacity-50 mb-1"></div>
               <div className="text-sm sm:text-base md:text-lg font-albert timeline-event-description">
                          {event.description}
               </div>
             </div>
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-[#666666] rounded-full z-10"></div>
+            <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-[#f5f5f0] rounded-full z-10"></div>
                      <div className="w-1/2 pl-6 text-left"></div>
                    </>
                  ) : (
                    <>
                      <div className="w-1/2 pr-6 text-right"></div>
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-[#666666] rounded-full z-10"></div>
+            <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-[#f5f5f0] rounded-full z-10"></div>
             <div className="w-1/2 pl-6 text-left flex flex-col justify-center">
               <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl alice-regular mb-1 timeline-event-time">
                          {event.time}
               </div>
-              <div className="border-b border-dashed border-[#666666] opacity-50 mb-1"></div>
+              <div className="border-b border-dashed border-[#f5f5f0] opacity-50 mb-1"></div>
               <div className="text-sm sm:text-base md:text-lg font-albert timeline-event-description">
                          {event.description}
               </div>

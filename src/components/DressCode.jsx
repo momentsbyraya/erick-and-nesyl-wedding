@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { dresscode } from '../data'
+import { themeConfig } from '../config/themeConfig'
 import Line from './Line'
 import './pages/Details.css'
 
@@ -17,15 +18,30 @@ const DressCode = () => {
   // State for tooltip visibility
   const [activeTooltip, setActiveTooltip] = useState(null)
   
+  // Color swatches for Principal Sponsors (darker/formal colors)
+  const sponsorColors = [
+    themeConfig.text.burntOrange,  // Burnt Orange
+    themeConfig.text.brown          // Brown
+  ]
+  
+  // Color swatches for Guests (garden wedding colors)
+  const guestColors = [
+    themeConfig.text.terracotta,    // Terracotta
+    themeConfig.text.burntOrange,   // Burnt Orange
+    themeConfig.text.sageGreen,     // Sage Green
+    themeConfig.text.beige,         // Beige
+    themeConfig.text.gardenGreen    // Garden Green
+  ]
+  
   // Color name mappings
   const colorNames = {
-    '#000000': 'Black',
-    '#003366': 'Navy Blue',
-    '#d8beb5': 'Dusty Rose',
-    '#ac898d': 'Mauve',
-    '#dab2a9': 'Blush Pink',
-    '#e7dbcb': 'Beige',
-    '#dcbaa1': 'Peach'
+    [themeConfig.text.burntOrange]: 'Burnt Orange',
+    [themeConfig.text.brown]: 'Brown',
+    [themeConfig.text.terracotta]: 'Terracotta',
+    [themeConfig.text.sageGreen]: 'Sage Green',
+    [themeConfig.text.beige]: 'Beige',
+    [themeConfig.text.ivory]: 'Ivory',
+    [themeConfig.text.gardenGreen]: 'Garden Green'
   }
 
   useEffect(() => {
@@ -143,7 +159,7 @@ const DressCode = () => {
   }, [])
 
   return (
-    <div className="relative pb-20 sm:pb-24 md:pb-32">
+    <div className="relative">
       {/* Dress Code Title */}
       <div ref={dressCodeTitleRef} className="text-center mb-12 sm:mb-16">
         <div>
@@ -166,7 +182,7 @@ const DressCode = () => {
           <p className="text-base sm:text-lg font-albert font-thin italic dress-code-description">
             We would love to see you in your
             formal attire
-            that suits in our color motif
+            that complements our garden wedding color palette
           </p>
         </div>
       </div>
@@ -203,7 +219,7 @@ const DressCode = () => {
                         
                         {/* Color Swatches */}
                         <div className="flex gap-2 justify-end lg-custom:justify-start">
-                          {['#000000', '#003366'].map((color, index) => (
+                          {sponsorColors.map((color, index) => (
                     <div 
                               key={index}
                               className="relative group"
@@ -296,7 +312,7 @@ const DressCode = () => {
                         
                         {/* Color Swatches */}
                         <div className="flex gap-2 justify-start lg-custom:justify-start">
-                          {['#d8beb5', '#ac898d', '#dab2a9', '#e7dbcb', '#dcbaa1'].map((color, index) => (
+                          {guestColors.map((color, index) => (
                             <div
                               key={index}
                               className="relative group"
@@ -317,15 +333,6 @@ const DressCode = () => {
                       </div>
                     </div>
                   </div>
-                  
-                  {/* Detailed Description - Full width, centered, smaller text */}
-                  {section.description && (
-                    <div className="w-full mt-4 text-center">
-                      <p className="text-xs sm:text-sm font-albert font-thin italic text-[#333333]">
-                        {section.description}
-                      </p>
-          </div>
-        )}
                       </div>
                     </div>
                 </div>

@@ -285,10 +285,10 @@ const NavIndex = ({ onOpenRSVP }) => {
               <div className="text-center flex-1 flex flex-col items-center justify-center">
                 {/* Groom's Name */}
                 <div>
-                  <p className="font-tebranos polaroid-text-name uppercase text-[#6B8FA3] leading-tight">
+                  <p className="font-tebranos polaroid-text-name uppercase leading-tight" style={{ color: '#CC5500' }}>
                     {couple.groom.firstName}
                   </p>
-                  <p className="font-ballet polaroid-text-name text-[#333333] leading-tight -mt-4">
+                  <p className="font-ballet polaroid-text-name leading-tight -mt-4" style={{ color: themeConfig.text.light }}>
                     {couple.groom.lastName}
                   </p>
                 </div>
@@ -297,10 +297,10 @@ const NavIndex = ({ onOpenRSVP }) => {
                 </p>
                 {/* Bride's Name */}
                 <div>
-                  <p className="font-tebranos polaroid-text-name uppercase text-[#6B8FA3] leading-tight">
+                  <p className="font-tebranos polaroid-text-name uppercase leading-tight" style={{ color: '#CC5500' }}>
                     {couple.bride.firstName}
                   </p>
-                  <p className="font-ballet polaroid-text-name text-[#333333] leading-tight -mt-4">
+                  <p className="font-ballet polaroid-text-name leading-tight -mt-4" style={{ color: themeConfig.text.light }}>
                     {couple.bride.lastName}
                   </p>
                 </div>

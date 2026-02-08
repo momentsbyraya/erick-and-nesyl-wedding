@@ -29,24 +29,6 @@ const EntourageSection = () => {
   const littleFlowerGirlsRef = useRef(null)
 
   useEffect(() => {
-    // Scroll-triggered animations
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: headerRef.current,
-        start: "top 50%",
-        end: "bottom 20%",
-        toggleActions: "play none none reverse"
-      }
-    })
-
-    // Header animation
-    if (headerRef.current) {
-      tl.fromTo(headerRef.current, 
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }
-      )
-    }
-
     // Collect all names from Parents down to Flower Girls for sequential row-by-row animation
     const allNameRows = []
     let currentTime = 0
@@ -253,9 +235,31 @@ const EntourageSection = () => {
     <section
       id="entourage"
       data-section="entourage"
-      className="relative w-full overflow-hidden px-6 py-32 sm:py-40 md:py-44 lg:py-52 bg-white"
+      className="relative w-full overflow-hidden bg-white"
     >
+      {/* Background Image Overlay */}
+      <div 
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: 'url(/assets/images/graphics/beige-1.png)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          opacity: 0.35
+        }}
+      ></div>
+      
+      {/* Flower Banner - Top */}
+      <div className="relative" style={{ width: '100vw' }}>
+        <img 
+          src="/assets/images/graphics/flower-banner-2.png" 
+          alt="Flower banner"
+          className="w-full h-auto object-contain"
+        />
+      </div>
+
       {/* Content */}
+      <div>
       <div className="relative z-20 flex items-center justify-center py-12">
         <div className="max-w-xs sm:max-w-md lg:max-w-4xl w-full mx-auto px-4 sm:px-6 md:px-6 lg:px-8">
           {/* Header Section */}
@@ -535,7 +539,17 @@ const EntourageSection = () => {
           )}
         </div>
       </div>
+      </div>
 
+      {/* Flower Banner - Bottom */}
+      <div className="relative" style={{ width: '100vw' }}>
+        <img 
+          src="/assets/images/graphics/flower-banner-2.png" 
+          alt="Flower banner"
+          className="w-full h-auto object-contain"
+          style={{ transform: 'scaleY(-1)' }}
+        />
+      </div>
     </section>
   )
 }

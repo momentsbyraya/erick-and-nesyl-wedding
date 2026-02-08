@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { Mail } from 'lucide-react'
 import SecondaryButton from './SecondaryButton'
 import { couple } from '../data'
 import { themeConfig } from '../config/themeConfig'
@@ -69,44 +70,59 @@ const RSVPSection = ({ onOpenRSVP }) => {
   }, [])
 
   return (
-    <div ref={rsvpSectionRef} className="relative pb-20 sm:pb-24 md:pb-32">
-      <div className="text-center mb-12 sm:mb-16">
-        {/* Single Flower 2 Image */}
-        <div className="flex justify-center mb-4">
-          <img 
-            src="/assets/images/graphics/single-flower-2.png" 
-            alt="Flower decoration" 
-            className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 object-contain"
-          />
-        </div>
-        <h3 ref={rsvpTitleRef} className="relative inline-block px-6 py-3">
-          <span 
-            className="font-foglihten text-3xl sm:text-4xl md:text-5xl lg:text-6xl inline-block leading-none"
-            style={{ fontStyle: 'italic', color: themeConfig.text.burntOrange }}
-          >
-            RSVP
-          </span>
-        </h3>
-        <div className="w-full max-w-3xl mx-auto mb-4">
-          <div className="w-full h-px bg-[#6B8FA3] opacity-40"></div>
-        </div>
-        <div ref={rsvpContentRef}>
-          <p className="text-sm sm:text-base font-albert font-thin text-[#333333] max-w-3xl mx-auto leading-relaxed text-center mb-6">
-            As we count the days with hearts so bright,<br />
-            Your RSVP helps make everything right.<br />
-            Kindly respond on or before<br /><strong className="!font-bold" style={{ fontWeight: 700 }}>{couple.rsvpDeadline ? `${couple.rsvpDeadline.month} ${couple.rsvpDeadline.day}, ${couple.rsvpDeadline.year}` : 'March 7, 2026'}</strong>, we pray.<br />
-            For after this date, arrangements are final and must stay.
-          </p>
-          {onOpenRSVP && (
-            <div className="flex justify-center">
-              <button
-                onClick={onOpenRSVP}
-                className="px-6 py-3 bg-[#333333] text-white rounded-lg hover:bg-[#333333]/80 transition-colors duration-200 font-albert"
-              >
-                RSVP Now
-              </button>
+    <div 
+      ref={rsvpSectionRef} 
+      className="relative my-20 sm:my-24 md:my-32 px-4 sm:px-6 md:px-8"
+      style={{
+        width: '100vw',
+        marginLeft: 'calc(-50vw + 50%)',
+        marginRight: 'calc(-50vw + 50%)',
+        backgroundImage: 'url(/assets/images/graphics/sage-bg.png)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
+      <div className="relative z-10 flex items-center justify-center py-16 sm:py-20 md:py-24">
+        <div className="bg-white px-6 py-8 sm:px-8 sm:py-10 md:px-12 md:py-12 max-w-3xl mx-auto">
+          <div className="text-center mb-12 sm:mb-16">
+            {/* Single Flower 3 Image */}
+            <div className="flex justify-center mb-4">
+              <img 
+                src="/assets/images/graphics/single-flower-3.png" 
+                alt="Flower decoration" 
+                className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 object-contain"
+              />
             </div>
-          )}
+            <h3 ref={rsvpTitleRef} className="relative inline-block px-6 py-3">
+              <span 
+                className="font-foglihten text-3xl sm:text-4xl md:text-5xl lg:text-6xl inline-block leading-none"
+                style={{ fontStyle: 'italic', color: themeConfig.text.burntOrange }}
+              >
+                RSVP
+              </span>
+            </h3>
+            <div className="w-full max-w-3xl mx-auto mb-4">
+              <div className="w-full h-px bg-[#6B8FA3] opacity-40"></div>
+            </div>
+            <div ref={rsvpContentRef}>
+              <p className="text-sm sm:text-base font-albert font-thin text-[#333333] max-w-3xl mx-auto leading-relaxed text-center mb-6">
+                Kindly respond on or before<br /><strong className="!font-bold" style={{ fontWeight: 700 }}>{couple.rsvpDeadline ? `${couple.rsvpDeadline.month} ${couple.rsvpDeadline.day}, ${couple.rsvpDeadline.year}` : 'March 7, 2026'}</strong>.<br />
+                After this date, arrangements are final.
+              </p>
+              {onOpenRSVP && (
+                <div className="flex justify-center">
+                  <button
+                    onClick={onOpenRSVP}
+                    className="px-6 py-3 bg-[#333333] text-white rounded-full hover:bg-[#333333]/80 transition-colors duration-200 font-albert flex items-center gap-2"
+                  >
+                    Respond
+                    <Mail size={18} />
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </div>

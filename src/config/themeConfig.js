@@ -21,6 +21,7 @@ export const themeConfig = {
         theme: 'text-[#E07A5F]',       // Custom theme text color (Terracotta)
         pause: 'text-[#dcdcdc]',       // Pause button text color
         custom: 'text-[#44484d]',      // Custom text color
+        light: '#6b7280',              // Light shade text color (gray-500)
         lightBlack: '#4a5568',         // Lighter black shade (gray-600)
         // Garden Wedding Color Palette
         terracotta: '#E07A5F',         // Terracotta color
