@@ -127,6 +127,10 @@
 }
 
 /* Gift Registry */
+.gift-registry-scroll::-webkit-scrollbar {
+  display: none;
+}
+
 .gift-registry-title-text {
   line-height: 0.8;
   color: #CC5500;
