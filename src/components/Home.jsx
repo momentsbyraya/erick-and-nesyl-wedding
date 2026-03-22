@@ -9,7 +9,8 @@ import Gallery from './Gallery'
 import DressCode from './DressCode'
 import FAQ from './FAQ'
 import SaveTheDateCounter from './SaveTheDateCounter'
-import Divider from './Divider'
+import FullBleedPhoto from './FullBleedPhoto'
+import FullBleedPhotoSplit from './FullBleedPhotoSplit'
 import './pages/Details.css'
 
 const Home = ({ onOpenRSVP }) => {
@@ -45,6 +46,11 @@ const Home = ({ onOpenRSVP }) => {
         />
       </div>
 
+      <FullBleedPhoto
+        src="/assets/images/prenup/JGM04266.jpg"
+        alt="Joshua and Heece"
+      />
+
       {/* Content */}
       <div className="relative z-20 flex items-center justify-center">
         <div className="max-w-xs sm:max-w-md lg:max-w-3xl w-full mx-auto">
@@ -53,24 +59,56 @@ const Home = ({ onOpenRSVP }) => {
         </div>
       </div>
 
+      <FullBleedPhotoSplit
+        leftSrc="/assets/images/prenup/JGM04170.jpg"
+        rightSrc="/assets/images/prenup/JGM03897.jpg"
+        leftAlt="Joshua and Heece"
+        rightAlt="Joshua and Heece"
+      />
+
       {/* Entourage Section - between Order of Events and Dress Code */}
       <EntourageSection />
 
-      {/* Content */}
+      <FullBleedPhotoSplit
+        invertLayout
+        leftSrc="/assets/images/prenup/prenup5.jpg"
+        rightSrc="/assets/images/prenup/JGM04213.jpg"
+        leftAlt="Joshua and Heece"
+        rightAlt="Joshua and Heece"
+      />
+
       <div className="relative z-20 flex items-center justify-center pt-12">
         <div className="max-w-xs sm:max-w-md lg:max-w-3xl w-full mx-auto">
-          {/* Dress Code Section */}
           <DressCode />
-
-          {/* RSVP Section */}
-          <RSVPSection onOpenRSVP={onOpenRSVP} />
-
-          {/* Love Story Section */}
-          <LoveStory />
         </div>
       </div>
 
-      <Gallery />
+      <FullBleedPhoto
+        src="/assets/images/prenup/DSC01046.jpg"
+        alt="Joshua and Heece"
+      />
+
+      <div className="relative z-20 flex items-center justify-center">
+        <div className="max-w-xs sm:max-w-md lg:max-w-3xl w-full mx-auto">
+          <RSVPSection onOpenRSVP={onOpenRSVP} />
+        </div>
+      </div>
+
+      <FullBleedPhotoSplit
+        leftSrc="/assets/images/prenup/prenup2.jpg"
+        rightSrc="/assets/images/prenup/JGM04077.jpg"
+        leftAlt="Joshua and Heece"
+        rightAlt="Joshua and Heece"
+      />
+
+      <div className="relative z-20 flex items-center justify-center">
+        <div className="max-w-xs sm:max-w-md lg:max-w-3xl w-full mx-auto">
+          <LoveStory />
+
+          {/* Gallery — masonry-style grid + lightbox */}
+          <Gallery />
+        </div>
+      </div>
 
       {/* FAQ Section */}
       <FAQ />

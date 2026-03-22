@@ -165,7 +165,7 @@ const DressCode = () => {
   }, [])
 
   return (
-    <div className="relative">
+    <div className="relative pb-16 sm:pb-20 md:pb-24">
       {/* Dress Code Title */}
       <div ref={dressCodeTitleRef} className="text-center mb-12 sm:mb-16">
         <div>

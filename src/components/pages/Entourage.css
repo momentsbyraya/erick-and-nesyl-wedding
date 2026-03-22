@@ -126,3 +126,14 @@
 .falling-flower.delay-14 {
   animation-delay: 14s;
 }
+
+/* Entourage lists: one line, no wrap; overflow paints past the line (no scrollbar) */
+.entourage-names-single-line p.font-poppins,
+.entourage-names-single-line p.ninong-item,
+.entourage-names-single-line p.ninang-item,
+.entourage-names-single-line p.groomsmen-item,
+.entourage-names-single-line p.bridesmaids-item {
+  white-space: nowrap;
+  overflow: visible;
+  max-width: 100%;
+}

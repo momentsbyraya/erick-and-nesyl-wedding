@@ -51,10 +51,30 @@ const Hero = () => {
     gsap.set(venueRef.current, { opacity: 0, y: 20 })
     gsap.set(playButtonRef.current, { opacity: 0, scale: 0.8 })
 
-    // Create timeline for sequential animations
+    // Create timeline for sequential animations (top → bottom: date/venue, then names)
     const tl = gsap.timeline({ delay: 0.3 })
 
-    // 1. Groom's name
+    // 1. Date
+    if (dateRef.current) {
+      tl.to(dateRef.current, {
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
+        ease: "power2.out"
+      })
+    }
+
+    // 2. Venue
+    if (venueRef.current) {
+      tl.to(venueRef.current, {
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
+        ease: "power2.out"
+      }, "-=0.3")
+    }
+
+    // 3. Groom's name
     if (groomFirstNameRef.current && groomLastNameRef.current) {
       tl.to(groomFirstNameRef.current, {
         opacity: 1,
@@ -70,7 +90,7 @@ const Hero = () => {
       }, "-=0.4")
     }
 
-    // 2. "AND"
+    // 4. "AND"
     if (andRef.current) {
       tl.to(andRef.current, {
         opacity: 1,
@@ -80,7 +100,7 @@ const Hero = () => {
       }, "-=0.2")
     }
 
-    // 3. Bride's name
+    // 5. Bride's name
     if (brideFirstNameRef.current && brideLastNameRef.current) {
       tl.to(brideFirstNameRef.current, {
         opacity: 1,
@@ -96,26 +116,6 @@ const Hero = () => {
       }, "-=0.4")
     }
 
-    // 4. Date
-    if (dateRef.current) {
-      tl.to(dateRef.current, {
-        opacity: 1,
-        y: 0,
-        duration: 0.5,
-        ease: "power2.out"
-      }, "-=0.2")
-    }
-
-    // 5. Venue
-    if (venueRef.current) {
-      tl.to(venueRef.current, {
-        opacity: 1,
-        y: 0,
-        duration: 0.5,
-        ease: "power2.out"
-      }, "-=0.3")
-    }
-
     // 6. Play button
     if (playButtonRef.current) {
       tl.to(playButtonRef.current, {
@@ -128,7 +128,7 @@ const Hero = () => {
   }, [])
 
   return (
-    <div className="relative w-full overflow-hidden bg-white" style={{ height: '100vh' }}>
+    <div className="relative w-full overflow-hidden bg-burgundy-dark" style={{ height: '100vh' }}>
       {/* Audio Element */}
       <audio
         ref={audioRef}
@@ -146,7 +146,7 @@ const Hero = () => {
         decoding="async"
       />
 
-      {/* Blurred white overlay — pulled past top/left/right so no hairline shows */}
+      {/* Blurred burgundy overlay — pulled past top/left/right so no hairline shows */}
       <svg
         className="pointer-events-none absolute -top-2 left-1/2 z-10 h-[calc(16rem+16px)] w-[calc(100%+24px)] max-w-none -translate-x-1/2 sm:h-[calc(20rem+16px)] md:h-[calc(24rem+16px)] lg:h-[calc(28rem+20px)]"
         preserveAspectRatio="none"
@@ -158,42 +158,25 @@ const Hero = () => {
             <feGaussianBlur in="SourceGraphic" stdDeviation="8" />
           </filter>
           <linearGradient id="topGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="rgba(255, 255, 255, 1)" />
-            <stop offset="12%" stopColor="rgba(255, 255, 255, 0.95)" />
-            <stop offset="40%" stopColor="rgba(255, 255, 255, 0.7)" />
-            <stop offset="70%" stopColor="rgba(255, 255, 255, 0.3)" />
-            <stop offset="100%" stopColor="rgba(255, 255, 255, 0)" />
+            <stop offset="0%" stopColor="rgba(90, 30, 42, 1)" />
+            <stop offset="12%" stopColor="rgba(90, 30, 42, 0.95)" />
+            <stop offset="40%" stopColor="rgba(90, 30, 42, 0.7)" />
+            <stop offset="70%" stopColor="rgba(90, 30, 42, 0.3)" />
+            <stop offset="100%" stopColor="rgba(90, 30, 42, 0)" />
           </linearGradient>
         </defs>
         <rect width="100%" height="100%" fill="url(#topGradient)" filter="url(#heroBlurTop)" />
       </svg>
       
-      {/* Couple Names, Date and Venue at Top */}
+      {/* Date and venue — top */}
       <div className="absolute top-0 left-0 right-0 pt-8 sm:pt-12 md:pt-16 lg:pt-20 px-4 sm:px-6 md:px-8 z-20">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="flex flex-col items-center justify-center">
-            {/* Groom's Name */}
-            <div>
-              <p ref={groomFirstNameRef} className="font-foglihten text-3xl sm:text-4xl md:text-5xl lg:text-6xl uppercase leading-tight" style={{ color: '#5A1E2A' }}>
-                {couple.groom.firstName}
-              </p>
-              <p ref={groomLastNameRef} className="font-ballet text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight -mt-2 sm:-mt-3" style={{ color: '#A68B6E', textShadow: '0 1px 2px rgba(0,0,0,0.08)' }}>
-                {couple.groom.lastName}
-              </p>
-            </div>
-            <p ref={andRef} className="caudex-bold text-sm sm:text-base md:text-lg lg:text-xl uppercase leading-tight my-2 sm:my-3" style={{ color: '#000000' }}>
-              AND
-            </p>
-            {/* Bride's Name */}
-            <div>
-              <p ref={brideFirstNameRef} className="font-foglihten text-3xl sm:text-4xl md:text-5xl lg:text-6xl uppercase leading-tight" style={{ color: '#5A1E2A' }}>
-                {couple.bride.firstName}
-              </p>
-              <p ref={brideLastNameRef} className="font-ballet text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight -mt-2 sm:-mt-3" style={{ color: '#A68B6E', textShadow: '0 1px 2px rgba(0,0,0,0.08)' }}>
-                {couple.bride.lastName}
-              </p>
-            </div>
-          </div>
+          <p ref={dateRef} className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-foglihten" style={{ color: '#F5F0E8', textShadow: '0 1px 3px rgba(0,0,0,0.45), 0 0 16px rgba(0,0,0,0.2)' }}>
+            {formatDate()}
+          </p>
+          <p ref={venueRef} className="text-xs sm:text-sm md:text-base font-albert mt-2 sm:mt-3" style={{ color: '#F5F0E8', textShadow: '0 1px 2px rgba(0,0,0,0.4)' }}>
+            {venueName}
+          </p>
         </div>
       </div>
 
@@ -208,11 +191,11 @@ const Hero = () => {
             <feGaussianBlur in="SourceGraphic" stdDeviation="8" />
           </filter>
           <linearGradient id="bottomGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="rgba(255, 255, 255, 0)" />
-            <stop offset="30%" stopColor="rgba(255, 255, 255, 0.3)" />
-            <stop offset="60%" stopColor="rgba(255, 255, 255, 0.7)" />
-            <stop offset="88%" stopColor="rgba(255, 255, 255, 0.95)" />
-            <stop offset="100%" stopColor="rgba(255, 255, 255, 1)" />
+            <stop offset="0%" stopColor="rgba(90, 30, 42, 0)" />
+            <stop offset="30%" stopColor="rgba(90, 30, 42, 0.3)" />
+            <stop offset="60%" stopColor="rgba(90, 30, 42, 0.7)" />
+            <stop offset="88%" stopColor="rgba(90, 30, 42, 0.95)" />
+            <stop offset="100%" stopColor="rgba(90, 30, 42, 1)" />
           </linearGradient>
         </defs>
         <rect width="100%" height="100%" fill="url(#bottomGradient)" filter="url(#heroBlurBottom)" />
@@ -232,16 +215,30 @@ const Hero = () => {
         )}
       </button>
 
-      {/* Date and Venue at Bottom Center */}
-      <div className="absolute bottom-0 left-0 right-0 pb-8 sm:pb-12 md:pb-16 lg:pb-20 px-4 sm:px-6 md:px-8 z-20">
+      {/* Couple names — bottom (extra bottom padding for play control) */}
+      <div className="absolute bottom-0 left-0 right-0 pb-10 sm:pb-12 md:pb-14 lg:pb-16 px-4 sm:px-6 md:px-8 z-20">
         <div className="max-w-4xl mx-auto text-center">
-          <p ref={dateRef} className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-foglihten" style={{ color: themeConfig.text.darkSageGreen }}>
-              {formatDate()}
+          <div className="flex flex-col items-center justify-center">
+            <div>
+              <p ref={groomFirstNameRef} className="font-foglihten text-3xl sm:text-4xl md:text-5xl lg:text-6xl uppercase leading-tight" style={{ color: '#F5F0E8', textShadow: '0 1px 3px rgba(0,0,0,0.45), 0 0 20px rgba(0,0,0,0.2)' }}>
+                {couple.groom.firstName}
+              </p>
+              <p ref={groomLastNameRef} className="font-ballet text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight -mt-2 sm:-mt-3" style={{ color: '#A68B6E', textShadow: '0 1px 2px rgba(0,0,0,0.08)' }}>
+                {couple.groom.lastName}
+              </p>
+            </div>
+            <p ref={andRef} className="caudex-bold text-sm sm:text-base md:text-lg lg:text-xl uppercase leading-tight my-2 sm:my-3" style={{ color: '#000000' }}>
+              AND
             </p>
-          {/* Venue - Plain Text */}
-          <p ref={venueRef} className="text-xs sm:text-sm md:text-base font-albert mt-2 sm:mt-3" style={{ color: themeConfig.text.lightBlack }}>
-              {venueName}
-            </p>
+            <div>
+              <p ref={brideFirstNameRef} className="font-foglihten text-3xl sm:text-4xl md:text-5xl lg:text-6xl uppercase leading-tight" style={{ color: '#F5F0E8', textShadow: '0 1px 3px rgba(0,0,0,0.45), 0 0 20px rgba(0,0,0,0.2)' }}>
+                {couple.bride.firstName}
+              </p>
+              <p ref={brideLastNameRef} className="font-ballet text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight -mt-2 sm:-mt-3" style={{ color: '#A68B6E', textShadow: '0 1px 2px rgba(0,0,0,0.08)' }}>
+                {couple.bride.lastName}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

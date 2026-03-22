@@ -305,7 +305,7 @@ const Details = () => {
       ref={sectionRef}
       id="details"
       data-section="details"
-      className="relative pb-20 w-full overflow-hidden bg-white details-section"
+      className="relative pb-20 w-full overflow-visible bg-white details-section"
     >
       {/* Flower Banner Image at Top */}
       <ImageBanner 
@@ -423,7 +423,7 @@ const Details = () => {
       </div>
 
       {/* FAQ Section - Outside container */}
-      <div className="relative z-20 mt-20 faq-section">
+      <div className="relative z-20 faq-section">
         <div ref={faqRef} className="relative z-10 w-full px-8 sm:px-12 md:px-8 lg:px-16">
           <h3 ref={faqTitleRef} className="relative inline-block px-6 py-3 mb-12 text-center w-full">
             <span 

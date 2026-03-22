@@ -1,95 +1,299 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { themeConfig } from '../config/themeConfig'
+import { createPortal } from 'react-dom'
+import { X, ChevronLeft, ChevronRight } from 'lucide-react'
+import './pages/Details.css'
 
-// Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger)
 
 const Gallery = () => {
   const sectionRef = useRef(null)
-  const headerRef = useRef(null)
+  const titleRef = useRef(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const modalRef = useRef(null)
+  const overlayRef = useRef(null)
   const contentRef = useRef(null)
-
-  // Gallery images from prenup folder
+  // Avoid overlap with Hero, full-bleed/split on Home, and Love Story polaroids.
+  // Includes former “unused” prenup*.jpg (1, 6, 9, 10, 12) only used here.
+  // Grid: repeating 10-cell pattern — full, 1+2, 2+1, full, 1+2, 2+1.
   const galleryImages = [
-    '/assets/images/prenup/image-1.jpg',
-    '/assets/images/prenup/image-2.jpg',
-    '/assets/images/prenup/image-3.jpg',
-    '/assets/images/prenup/image-4.jpg',
-    '/assets/images/prenup/image-5.jpg'
+    '/assets/images/prenup/JGM04189.jpg',
+    '/assets/images/prenup/DSC00983.jpg',
+    '/assets/images/prenup/JGM04100.jpg',
+    '/assets/images/prenup/JGM03893.jpg',
+    '/assets/images/prenup/DSC01113.jpg',
+    '/assets/images/prenup/JGM04241.jpg',
+    '/assets/images/prenup/DSC01020.jpg',
+    '/assets/images/prenup/JGM04062.jpg',
+    '/assets/images/prenup/DSC01026.jpg',
+    '/assets/images/prenup/DSC01080.jpg',
+    '/assets/images/prenup/prenup1.jpg',
+    '/assets/images/prenup/prenup6.jpg',
+    '/assets/images/prenup/prenup9.jpg',
+    '/assets/images/prenup/prenup10.jpg',
+    '/assets/images/prenup/prenup12.jpg',
+    '/assets/images/prenup/JGM04077.jpg',
   ]
 
+  const gridColumnPattern = [
+    'span 3',
+    'span 1',
+    'span 2',
+    'span 2',
+    'span 1',
+    'span 3',
+    'span 1',
+    'span 2',
+    'span 2',
+    'span 1',
+  ]
+
+  const imageRefs = useRef([])
+
   useEffect(() => {
-    // Scroll-triggered animations
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top 50%",
-        end: "bottom 20%",
-        toggleActions: "play none none reverse"
+    if (titleRef.current) {
+      ScrollTrigger.create({
+        trigger: titleRef.current,
+        start: 'top 80%',
+        animation: gsap.fromTo(
+          titleRef.current,
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }
+        ),
+        toggleActions: 'play none none reverse',
+      })
+    }
+
+    imageRefs.current.forEach((ref, index) => {
+      if (ref) {
+        const isFromLeft = index % 2 === 0
+        const xValue = isFromLeft ? -100 : 100
+
+        gsap.set(ref, {
+          opacity: 0,
+          x: xValue,
+          force3D: true,
+        })
+
+        ScrollTrigger.create({
+          trigger: ref,
+          start: 'top 85%',
+          animation: gsap.to(ref, {
+            opacity: 1,
+            x: 0,
+            duration: 0.8,
+            ease: 'power2.out',
+            force3D: true,
+          }),
+          toggleActions: 'play none none reverse',
+        })
       }
     })
 
-    // Header animation first
-    tl.fromTo(headerRef.current, 
-      { opacity: 0, y: 30 },
-      { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }
-    )
-
-    // Content animation after header
-    tl.fromTo(contentRef.current, 
-      { opacity: 0, y: 30 },
-      { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
-      "-=0.4"
-    )
-
-    // Cleanup function
     return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill())
+      ScrollTrigger.getAll().forEach((trigger) => {
+        if (
+          trigger.vars &&
+          (trigger.vars.trigger === titleRef.current ||
+            imageRefs.current.includes(trigger.vars.trigger))
+        ) {
+          trigger.kill()
+        }
+      })
     }
-  }, [])
+  }, [galleryImages.length])
+
+  const handleImageClick = (index) => {
+    setCurrentImageIndex(index)
+    setIsModalOpen(true)
+  }
+
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % galleryImages.length)
+  }
+
+  const prevImage = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length)
+  }
+
+  const closeModal = () => {
+    setIsModalOpen(false)
+  }
+
+  useEffect(() => {
+    if (!isModalOpen) return
+
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        setIsModalOpen(false)
+      } else if (e.key === 'ArrowLeft') {
+        setCurrentImageIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length)
+      } else if (e.key === 'ArrowRight') {
+        setCurrentImageIndex((prev) => (prev + 1) % galleryImages.length)
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [isModalOpen, galleryImages.length])
+
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.style.overflow = 'hidden'
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth
+      if (scrollbarWidth > 0) {
+        document.body.style.paddingRight = `${scrollbarWidth}px`
+      }
+
+      if (overlayRef.current && contentRef.current) {
+        gsap.set([overlayRef.current, contentRef.current], { opacity: 0 })
+        gsap.set(contentRef.current, { scale: 0.9 })
+
+        gsap.to(overlayRef.current, { opacity: 1, duration: 0.3, ease: 'power2.out' })
+        gsap.to(contentRef.current, {
+          opacity: 1,
+          scale: 1,
+          duration: 0.4,
+          ease: 'power2.out',
+        })
+      }
+    } else {
+      document.body.style.overflow = ''
+      document.body.style.paddingRight = ''
+    }
+
+    return () => {
+      document.body.style.overflow = ''
+      document.body.style.paddingRight = ''
+    }
+  }, [isModalOpen])
 
   return (
-    <section 
-      ref={sectionRef}
-      className={`relative py-20 w-full overflow-hidden min-h-screen md:min-h-0 ${themeConfig.paragraph.background}`}
-    >
-      {/* Background Image with reduced opacity */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: 'url(/assets/images/graphics/calligraphy-bg.png)',
-          opacity: 0.15
-        }}
-      />
-      
-      {/* Content */}
-      <div className="relative z-20 flex items-center justify-center py-12">
-        <div className="max-w-md sm:max-w-xl lg:max-w-4xl xl:max-w-5xl w-full mx-auto px-8 sm:px-12 lg:px-16">
-          {/* Header Section */}
-          <div ref={headerRef} className="text-center mb-12">
-            <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#333333] font-lavishly italic">
-              Our Moments
-            </h2>
-          </div>
+    <div ref={sectionRef} className="relative pb-8 sm:pb-12 md:pb-16">
+      {/* Title strip — same layout / styles as FAQ (Details.css .faq-section, .faq-title-text) */}
+      <div className="relative z-20 faq-section !py-8 sm:!py-10">
+        <div className="relative z-10 w-full px-8 sm:px-12 md:px-8 lg:px-16">
+          <h3
+            ref={titleRef}
+            className="relative inline-block px-6 py-3 text-center w-full"
+          >
+            <span className="font-foglihten text-3xl sm:text-4xl md:text-5xl lg:text-6xl inline-block leading-none capitalize faq-title-text">
+              Gallery
+            </span>
+          </h3>
+        </div>
+      </div>
 
-          {/* Gallery Images */}
-          <div ref={contentRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {galleryImages.map((image, index) => (
-              <div key={index} className="soft-edges relative">
-                <img 
-                  src={image} 
-                  alt={`Gallery image ${index + 1}`}
-                  className="w-full h-auto object-cover"
+      <div className="max-w-xs sm:max-w-md lg:max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12 md:py-16">
+        <div className="grid grid-cols-3 gap-2 sm:gap-3 md:gap-4" style={{ gridAutoRows: '1fr' }}>
+          {galleryImages.map((image, index) => {
+            const gridColumn = gridColumnPattern[index % gridColumnPattern.length]
+
+            return (
+              <div
+                key={index}
+                ref={(el) => {
+                  imageRefs.current[index] = el
+                }}
+                className="cursor-pointer overflow-hidden max-h-[150px] lg:max-h-[250px]"
+                style={{
+                  gridColumn,
+                  height: '100%',
+                  willChange: 'transform',
+                  backfaceVisibility: 'hidden',
+                  transform: 'translateZ(0)',
+                }}
+                onClick={() => handleImageClick(index)}
+              >
+                <img
+                  src={image}
+                  alt={`Gallery ${index + 1}`}
+                  className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-300"
+                  style={{
+                    height: '100%',
+                    willChange: 'transform',
+                    backfaceVisibility: 'hidden',
+                  }}
                   loading="lazy"
                 />
               </div>
-            ))}
-          </div>
+            )
+          })}
         </div>
       </div>
-    </section>
+
+      {isModalOpen &&
+        createPortal(
+          <div
+            ref={modalRef}
+            className="fixed inset-0 z-[9999] flex items-center justify-center"
+            style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}
+          >
+            <div
+              ref={overlayRef}
+              className="absolute inset-0 bg-black/90 backdrop-blur-sm"
+              onClick={closeModal}
+            />
+
+            <button
+              type="button"
+              onClick={closeModal}
+              className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors duration-200 cursor-pointer"
+              style={{ pointerEvents: 'auto' }}
+              aria-label="Close"
+            >
+              <X className="w-6 h-6 text-white" />
+            </button>
+
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation()
+                prevImage()
+              }}
+              className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors duration-200 cursor-pointer"
+              style={{ pointerEvents: 'auto' }}
+              aria-label="Previous image"
+            >
+              <ChevronLeft className="w-6 h-6 text-white" />
+            </button>
+
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation()
+                nextImage()
+              }}
+              className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors duration-200 cursor-pointer"
+              style={{ pointerEvents: 'auto' }}
+              aria-label="Next image"
+            >
+              <ChevronRight className="w-6 h-6 text-white" />
+            </button>
+
+            <div
+              ref={contentRef}
+              className="relative z-10 max-w-[90vw] max-h-[90vh] flex items-center justify-center"
+              style={{ pointerEvents: 'none' }}
+            >
+              <img
+                src={galleryImages[currentImageIndex]}
+                alt={`Gallery image ${currentImageIndex + 1}`}
+                className="max-w-full max-h-[90vh] object-contain"
+              />
+            </div>
+
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 px-4 py-2 rounded-full bg-white/20 backdrop-blur-sm">
+              <span className="text-white text-sm font-albert">
+                {currentImageIndex + 1} / {galleryImages.length}
+              </span>
+            </div>
+          </div>,
+          document.body
+        )}
+    </div>
   )
 }
 

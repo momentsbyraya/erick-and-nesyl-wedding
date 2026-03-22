@@ -22,16 +22,13 @@ const LoveStory = () => {
   // Split content into paragraphs
   const paragraphs = loveStory.content.split('\n\n').filter(p => p.trim())
 
-  // Polaroid images - 6 in story (2+2+2) + 2 below last paragraph (moment 5 & 6 = unused prenup5, prenup6)
+  // Polaroid images — alternating 1 / 2 / 1 per paragraph (3 paragraphs → 4 images).
+  // Intentionally different from Gallery grid + Home FullBleedPhoto / FullBleedPhotoSplit.
   const polaroidImages = [
-    '/assets/images/prenup/prenup1.jpg',   // moment 1
-    '/assets/images/prenup/prenup2.jpg',   // moment 2
-    '/assets/images/prenup/prenup3.jpg',   // moment 3
-    '/assets/images/prenup/prenup7.jpg',   // moment 4
-    '/assets/images/prenup/prenup5.jpg',  // moment 5
-    '/assets/images/prenup/prenup6.jpg',   // moment 6
-    '/assets/images/prenup/prenup10.jpg',
-    '/assets/images/prenup/prenup11.jpg',
+    '/assets/images/prenup/JGM03967.jpg',
+    '/assets/images/prenup/JGM04089.jpg',
+    '/assets/images/prenup/DSC01025.jpg',
+    '/assets/images/prenup/JGM04140.jpg',
   ]
 
   useEffect(() => {
@@ -164,7 +161,8 @@ const LoveStory = () => {
 
   // Polaroid component
   const Polaroid = ({ image, rotation = 0, index, size = 'normal' }) => {
-    const maxWidth = size === 'small' ? '150px' : '200px'
+    const maxWidth =
+      size === 'solo' ? '140px' : size === 'small' ? '150px' : '200px'
     return (
     <div 
       className="bg-white shadow-lg relative cursor-pointer"
@@ -206,8 +204,17 @@ const LoveStory = () => {
     )
   }
 
+  let imageCursor = 0
+  const storySegments = paragraphs.map((paragraph, index) => {
+    const imageCount = index % 2 === 0 ? 1 : 2
+    const startImageIndex = imageCursor
+    const imageIndices = Array.from({ length: imageCount }, (_, i) => startImageIndex + i)
+    imageCursor += imageCount
+    return { paragraph, index, imageCount, imageIndices }
+  })
+
   return (
-    <div ref={sectionRef} className="relative pb-8 sm:pb-12 md:pb-16">
+    <div ref={sectionRef} className="relative pt-12 sm:pt-16 md:pt-20">
       <div className="text-center mb-12 sm:mb-16">
         {/* Heart Image */}
         <div className="flex justify-center mb-4">
@@ -225,74 +232,36 @@ const LoveStory = () => {
             {loveStory.title}
           </span>
         </h3>
-        {/* Center decorative curved line + dot */}
-        <div className="flex justify-center my-8 sm:my-10 pointer-events-none" aria-hidden="true">
-          <div className="relative" style={{ width: '140px', height: '100px' }}>
-            <svg
-              width="140"
-              height="100"
-              viewBox="0 0 140 100"
-              fill="none"
-              className="absolute inset-0"
-              style={{ overflow: 'visible' }}
-            >
-              <path
-                d="M 70 0 Q 100 25, 70 50 Q 40 75, 70 100"
-                stroke="#5A1E2A"
-                strokeWidth="2"
-                fill="none"
-                strokeDasharray="6 5"
-                opacity="0.5"
-              />
-            </svg>
-            <div
-              className="absolute rounded-full"
-              style={{
-                width: '10px',
-                height: '10px',
-                left: '50%',
-                bottom: 0,
-                transform: 'translate(-50%, 50%)',
-                backgroundColor: '#5A1E2A',
-                opacity: 0.5,
-              }}
-            />
-          </div>
-        </div>
       </div>
 
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-8">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-8 pb-16 sm:pb-20 md:pb-24">
         <div className="relative">
           {/* Story content */}
           <div className="relative z-10 space-y-16 sm:space-y-20 md:space-y-24">
-            {paragraphs.map((paragraph, index) => {
-              // 6 images in story: para 0 → 2, para 1 → 2, para 2 (last) → 2
-              const startImageIndex = index * 2
+            {storySegments.map(({ paragraph, index, imageCount, imageIndices }) => {
               const isLast = index === paragraphs.length - 1
-              const imageCount = 2
-              const imageIndices = Array.from({ length: imageCount }, (_, i) => startImageIndex + i)
 
               return (
                 <div key={index} className="story-item relative">
                   {/* Curved connecting line and dot */}
                   {!isLast && (
                     <div className="absolute left-1/2 transform -translate-x-1/2 pointer-events-none" style={{ 
-                      bottom: '-4rem',
-                      width: '120px',
-                      height: '8rem',
+                      bottom: '-2.25rem',
+                      width: '100px',
+                      height: '4.5rem',
                       zIndex: 0
                     }}>
-                      {/* Curved SVG line - S shape */}
+                      {/* Curved SVG line - S shape (shorter tail) */}
                       <svg 
-                        width="120" 
+                        width="100" 
                         height="100%" 
-                        viewBox="0 0 120 100" 
+                        viewBox="0 0 100 100" 
                         preserveAspectRatio="none"
                         className="absolute inset-0"
                         style={{ overflow: 'visible' }}
                       >
                         <path
-                          d="M 60 0 Q 40 25, 60 50 T 60 100"
+                          d="M 50 0 Q 32 22, 50 45 T 50 100"
                           stroke="#5A1E2A"
                           strokeWidth="2"
                           fill="none"
@@ -311,17 +280,23 @@ const LoveStory = () => {
                     </div>
                   )}
 
-                  {/* Each row: polaroids (if any) then paragraph */}
+                  {/* Each row: polaroids (if any) then paragraph — pair always side-by-side (flex-row) */}
                   <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-8">
                     {imageCount > 0 && (
-                      <div className="flex gap-4 sm:gap-6 justify-center flex-1">
+                      <div
+                        className={`flex justify-center flex-1 min-w-0 ${
+                          imageCount === 2
+                            ? 'flex-row flex-nowrap gap-2 sm:gap-6'
+                            : 'flex-row'
+                        }`}
+                      >
                         {imageIndices.map((imgIdx, i) => polaroidImages[imgIdx] && (
                           <Polaroid
                             key={imgIdx}
                             image={polaroidImages[imgIdx]}
-                            rotation={i === 0 ? -5 : 5}
+                            rotation={imageCount === 1 ? -4 : i === 0 ? -5 : 5}
                             index={imgIdx}
-                            size="normal"
+                            size={imageCount === 1 ? 'solo' : 'normal'}
                           />
                         ))}
                       </div>
@@ -335,16 +310,6 @@ const LoveStory = () => {
                 </div>
               )
             })}
-
-            {/* 2 images below the last story paragraph */}
-            <div className="story-item flex justify-center gap-6 sm:gap-8 mt-16 sm:mt-20">
-              {polaroidImages[6] && (
-                <Polaroid image={polaroidImages[6]} rotation={-4} index={6} />
-              )}
-              {polaroidImages[7] && (
-                <Polaroid image={polaroidImages[7]} rotation={4} index={7} />
-              )}
-            </div>
           </div>
         </div>
       </div>

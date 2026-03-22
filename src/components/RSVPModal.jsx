@@ -2,7 +2,11 @@ import React, { useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import { gsap } from 'gsap'
 import { X } from 'lucide-react'
-import { themeConfig } from '../config/themeConfig'
+import { couple } from '../data'
+
+const RSVP_FORM_EMBED_URL =
+  couple.rsvpGoogleFormEmbedUrl ||
+  'https://docs.google.com/forms/d/e/1FAIpQLScigmo-gY2rNBfFwyrPvs9o932AVIQDCFisMVGpf16wsaD7KA/viewform?embedded=true'
 
 const RSVPModal = ({ isOpen, onClose }) => {
   const modalRef = useRef(null)
@@ -11,33 +15,27 @@ const RSVPModal = ({ isOpen, onClose }) => {
 
   useEffect(() => {
     if (isOpen) {
-      // Prevent body scroll when modal is open
       document.body.style.overflow = 'hidden'
-      // Prevent layout shift from scrollbar
       const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth
       if (scrollbarWidth > 0) {
         document.body.style.paddingRight = `${scrollbarWidth}px`
       }
-      
-      // Modal entrance animation
-      gsap.set([overlayRef.current, contentRef.current], { opacity: 0 })
-      gsap.set(contentRef.current, { scale: 0.8, y: 50 })
-      
-      gsap.to(overlayRef.current, { opacity: 1, duration: 0.3, ease: "power2.out" })
-      gsap.to(contentRef.current, { 
-        opacity: 1, 
-        scale: 1, 
-        y: 0, 
-        duration: 0.4, 
-        ease: "back.out(1.7)" 
+
+      gsap.set(overlayRef.current, { opacity: 0 })
+      gsap.set(contentRef.current, { opacity: 0, y: 24 })
+
+      gsap.to(overlayRef.current, { opacity: 1, duration: 0.35, ease: 'power2.out' })
+      gsap.to(contentRef.current, {
+        opacity: 1,
+        y: 0,
+        duration: 0.4,
+        ease: 'power2.out',
       })
     } else {
-      // Re-enable body scroll when modal is closed
       document.body.style.overflow = ''
       document.body.style.paddingRight = ''
     }
 
-    // Cleanup function
     return () => {
       document.body.style.overflow = ''
       document.body.style.paddingRight = ''
@@ -45,17 +43,17 @@ const RSVPModal = ({ isOpen, onClose }) => {
   }, [isOpen])
 
   const handleClose = () => {
-    // Modal exit animation
-    gsap.to(overlayRef.current, { opacity: 0, duration: 0.2, ease: "power2.out" })
-    gsap.to(contentRef.current, { 
-      opacity: 0, 
-      scale: 0.8, 
-      y: 50, 
-      duration: 0.3, 
-      ease: "power2.out" 
-    }).then(() => {
-      onClose()
-    })
+    gsap.to(overlayRef.current, { opacity: 0, duration: 0.2, ease: 'power2.out' })
+    gsap
+      .to(contentRef.current, {
+        opacity: 0,
+        y: 24,
+        duration: 0.25,
+        ease: 'power2.out',
+      })
+      .then(() => {
+        onClose()
+      })
   }
 
   const handleOverlayClick = (e) => {
@@ -67,41 +65,54 @@ const RSVPModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null
 
   return createPortal(
-    <div 
+    <div
       ref={modalRef}
-      className="fixed inset-0 z-50 flex items-center justify-center p-4"
+      className="fixed inset-0 z-50 flex flex-col m-0 p-0"
       style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}
     >
-      {/* Overlay */}
       <div
         ref={overlayRef}
-        className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+        className="absolute inset-0 z-0 cursor-pointer overflow-hidden"
         onClick={handleOverlayClick}
-      />
-      
-      {/* Modal Content */}
+        aria-hidden
+      >
+        <div
+          className="absolute inset-0 bg-cover bg-center pointer-events-none"
+          style={{
+            backgroundImage: 'url(/assets/images/prenup/JGM04077.jpg)',
+            filter: 'blur(14px)',
+            transform: 'scale(1.12)',
+          }}
+        />
+        <div className="absolute inset-0 bg-black/35 pointer-events-none" />
+      </div>
+
       <div
         ref={contentRef}
-        className={`relative ${themeConfig.paragraph.background} rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] flex flex-col overflow-hidden`}
+        className="relative z-10 flex flex-col flex-1 min-h-0 w-full h-full min-w-0"
+        onClick={(e) => e.stopPropagation()}
       >
-        {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-300/50 flex-shrink-0">
-          <h2 className="text-2xl font-leckerli font-light text-gray-900/70">RSVP</h2>
+        <header className="flex shrink-0 items-center justify-between gap-4 px-4 py-3 sm:px-6 sm:py-4 border-b border-white/20 bg-white/85 backdrop-blur-md">
+          <h2 className="text-xl sm:text-2xl font-leckerli font-light text-burgundy-dark">
+            RSVP
+          </h2>
           <button
+            type="button"
             onClick={handleClose}
-            className="p-2 text-gray-700 hover:text-gray-900 hover:bg-gray-200/50 rounded-full transition-colors duration-200"
+            className="p-2 text-burgundy-dark hover:bg-burgundy-dark/10 rounded-full transition-colors duration-200"
+            aria-label="Close RSVP form"
           >
             <X className="w-6 h-6" />
           </button>
-        </div>
-        
-        {/* Content */}
-        <div className="p-6 overflow-y-auto flex-1 rsvp-modal-content">
-          <div className="w-full min-h-[400px] rounded-lg flex items-center justify-center">
-            <p className="text-xl sm:text-2xl font-albert font-thin text-burgundy-dark">
-              To Be Added
-            </p>
-          </div>
+        </header>
+
+        <div className="flex-1 min-h-0 flex flex-col bg-white/95 backdrop-blur-sm">
+          <iframe
+            title="RSVP — Joshua and Heece"
+            src={RSVP_FORM_EMBED_URL}
+            className="w-full flex-1 min-h-0 border-0 rsvp-modal-content"
+            allow="fullscreen"
+          />
         </div>
       </div>
     </div>,
@@ -109,4 +120,4 @@ const RSVPModal = ({ isOpen, onClose }) => {
   )
 }
 
-export default RSVPModal 
+export default RSVPModal

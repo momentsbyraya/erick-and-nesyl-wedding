@@ -73,30 +73,6 @@ const SaveTheDateCounter = () => {
         backgroundRepeat: 'no-repeat'
       }}
     >
-      {/* SVG Overlay at Top */}
-      <svg className="absolute top-0 left-0 w-full h-32 sm:h-40 md:h-48 z-10 pointer-events-none" preserveAspectRatio="none" viewBox="0 0 1200 200" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="topGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="rgba(255, 255, 255, 0.9)" />
-            <stop offset="50%" stopColor="rgba(255, 255, 255, 0.5)" />
-            <stop offset="100%" stopColor="rgba(255, 255, 255, 0)" />
-          </linearGradient>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#topGradient)" />
-      </svg>
-
-      {/* SVG Overlay at Bottom */}
-      <svg className="absolute bottom-0 left-0 w-full h-32 sm:h-40 md:h-48 z-10 pointer-events-none" preserveAspectRatio="none" viewBox="0 0 1200 200" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="bottomGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="rgba(255, 255, 255, 0)" />
-            <stop offset="50%" stopColor="rgba(255, 255, 255, 0.5)" />
-            <stop offset="100%" stopColor="rgba(255, 255, 255, 0.9)" />
-          </linearGradient>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#bottomGradient)" />
-      </svg>
-
       <div className="relative z-20 max-w-xs sm:max-w-md lg:max-w-3xl w-full mx-auto px-4 sm:px-6 md:px-8 flex flex-col justify-between min-h-[400px] sm:min-h-[500px] md:min-h-[600px]">
         {/* Title */}
         <div className="text-center">

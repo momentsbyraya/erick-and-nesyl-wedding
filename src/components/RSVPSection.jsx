@@ -69,21 +69,28 @@ const RSVPSection = ({ onOpenRSVP }) => {
   }, [])
 
   return (
-    <div 
-      ref={rsvpSectionRef} 
-      className="relative my-20 sm:my-24 md:my-32 px-4 sm:px-6 md:px-8"
+    <div
+      ref={rsvpSectionRef}
+      className="relative px-4 sm:px-6 md:px-8 overflow-hidden"
       style={{
         width: '100vw',
         marginLeft: 'calc(-50vw + 50%)',
         marginRight: 'calc(-50vw + 50%)',
-        backgroundImage: 'url(/assets/images/graphics/sage-bg.png)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
       }}
     >
+      <div
+        className="pointer-events-none absolute inset-0 z-0"
+        style={{
+          backgroundImage: 'url(/assets/images/prenup/prenup3.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          opacity: 0.8,
+        }}
+        aria-hidden
+      />
       <div className="relative z-10 flex items-center justify-center py-16 sm:py-20 md:py-24">
-        <div className="bg-white px-6 py-8 sm:px-8 sm:py-10 md:px-12 md:py-12 max-w-3xl mx-auto">
+        <div className="bg-white/50 px-6 py-8 sm:px-8 sm:py-10 md:px-12 md:py-12 max-w-3xl mx-auto">
       <div className="text-center mb-12 sm:mb-16">
             {/* Single Flower 3 Image */}
         <div className="flex justify-center mb-4">
