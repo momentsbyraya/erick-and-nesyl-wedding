@@ -24,38 +24,16 @@ const Moments = () => {
 
   // First gallery image - single image
   const firstGalleryImage = [
-    '/assets/images/prenup/DSC_3239.jpg'
+    '/assets/images/prenup/TET03579.jpg'
   ]
 
-  // Second gallery - images NOT used in NavIndex and Details
-  // Used elsewhere: DSC_3239.jpg (NavIndex, Moments), DSC_5234.jpg (NavIndex), DSC_5459.jpg (NavIndex), DSC_3496.jpg (Details)
-  // Pattern: 1 full, 2 (1/3 + 2/3), 2 (2/3 + 1/3), 1 full, repeat
+  // Minimal gallery using only the user-selected prenup photos.
   const secondGalleryImages = [
-    // First column: 1 full image
-    '/assets/images/prenup/DSC_3122.jpg',
-    // Second column: 1/3 and 2/3
-    '/assets/images/prenup/DSC_3139.jpg', // 1/3
-    '/assets/images/prenup/DSC_3182.jpg', // 2/3
-    // Third column: 2/3 and 1/3
-    '/assets/images/prenup/DSC_3207.jpg', // 2/3
-    '/assets/images/prenup/DSC_3344.jpg', // 1/3
-    // Fourth column: 1 full image
-    '/assets/images/prenup/DSC_3961.jpg',
-    // Continue with remaining images
-    '/assets/images/prenup/DSC_3690.jpg',
-    '/assets/images/prenup/DSC_3809.jpg', // 1/3
-    '/assets/images/prenup/DSC_3543.jpg', // 2/3
-    '/assets/images/prenup/DSC_4073.jpg', // 2/3
-    '/assets/images/prenup/DSC_4076.jpg', // 1/3
-    '/assets/images/prenup/DSC_4154.jpg',
-    '/assets/images/prenup/DSC_4171.jpg', // 1/3
-    '/assets/images/prenup/DSC_4782.jpg', // 2/3
-    '/assets/images/prenup/DSC_4639.jpg', // 2/3
-    '/assets/images/prenup/DSC_4307.jpg', // 1/3
-    '/assets/images/prenup/DSC_4662.jpg',
-    '/assets/images/prenup/DSC_4681.jpg', // 1/3
-    '/assets/images/prenup/DSC_4715.jpg', // 2/3
-    '/assets/images/prenup/DSC_4258.jpg' // 2/3
+    '/assets/images/prenup/TET03617.jpg',
+    '/assets/images/prenup/TET04315.jpg',
+    '/assets/images/prenup/TET04120.jpg',
+    '/assets/images/prenup/TET03960.jpg',
+    '/assets/images/prenup/TET04239.jpg'
   ]
 
   // Images array for the lightbox (includes all gallery images)
@@ -179,7 +157,7 @@ const Moments = () => {
       >
         {/* Image Banner at Top */}
         <ImageBanner
-          src="/assets/images/prenup/prenup1.png"
+          src="/assets/images/prenup/TET04315.jpg"
           alt="Moments banner"
           title="Love Story"
           subtitle="Our"
@@ -285,50 +263,8 @@ const Moments = () => {
                 style={{ gridAutoRows: '1fr' }}
               >
                 {secondGalleryImages.map((image, index) => {
-                  // Pattern: 1 full, 2 (1/3 + 2/3), 2 (2/3 + 1/3), 1 full, then 1/3 + 2/3
-                  let gridColumn = 'span 1' // default 1/3 width
-
-                  if (index === 0) {
-                    gridColumn = 'span 3'
-                  } else if (index === 1) {
-                    gridColumn = 'span 1'
-                  } else if (index === 2) {
-                    gridColumn = 'span 2'
-                  } else if (index === 3) {
-                    gridColumn = 'span 2'
-                  } else if (index === 4) {
-                    gridColumn = 'span 1'
-                  } else if (index === 5) {
-                    gridColumn = 'span 3'
-                  } else if (index === 6) {
-                    gridColumn = 'span 1'
-                  } else if (index === 7) {
-                    gridColumn = 'span 2'
-                  } else if (index === 8) {
-                    gridColumn = 'span 2'
-                  } else if (index === 9) {
-                    gridColumn = 'span 1'
-                  } else if (index === 10) {
-                    gridColumn = 'span 3'
-                  } else if (index === 11) {
-                    gridColumn = 'span 1'
-                  } else if (index === 12) {
-                    gridColumn = 'span 2'
-                  } else if (index === 13) {
-                    gridColumn = 'span 2'
-                  } else if (index === 14) {
-                    gridColumn = 'span 1'
-                  } else if (index === 15) {
-                    gridColumn = 'span 3'
-                  } else if (index === 16) {
-                    gridColumn = 'span 1'
-                  } else if (index === 17) {
-                    gridColumn = 'span 2'
-                  } else if (index === 18) {
-                    gridColumn = 'span 2'
-                  } else if (index === 19) {
-                    gridColumn = 'span 2'
-                  }
+                  const compactPattern = ['span 3', 'span 1', 'span 2', 'span 2', 'span 1']
+                  const gridColumn = compactPattern[index % compactPattern.length]
 
                   return (
                     <div
@@ -352,7 +288,7 @@ const Moments = () => {
                       <img
                         src={image}
                         alt={`Gallery ${index + 1}`}
-                        className={`w-full h-full object-cover hover:scale-105 transition-transform duration-300 ${image.includes('DSC_4307') ? 'lg:object-[center_30%]' : ''}`}
+                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                         style={{
                           height: '100%',
                           willChange: 'transform',

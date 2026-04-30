@@ -2,11 +2,6 @@ import React, { useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import { gsap } from 'gsap'
 import { X } from 'lucide-react'
-import { couple } from '../data'
-
-const RSVP_FORM_EMBED_URL =
-  couple.rsvpGoogleFormEmbedUrl ||
-  'https://docs.google.com/forms/d/e/1FAIpQLScigmo-gY2rNBfFwyrPvs9o932AVIQDCFisMVGpf16wsaD7KA/viewform?embedded=true'
 
 const RSVPModal = ({ isOpen, onClose }) => {
   const modalRef = useRef(null)
@@ -79,7 +74,7 @@ const RSVPModal = ({ isOpen, onClose }) => {
         <div
           className="absolute inset-0 bg-cover bg-center pointer-events-none"
           style={{
-            backgroundImage: 'url(/assets/images/prenup/JGM04077.jpg)',
+            backgroundImage: 'url(/assets/images/prenup/TET04239.jpg)',
             filter: 'blur(14px)',
             transform: 'scale(1.12)',
           }}
@@ -107,12 +102,11 @@ const RSVPModal = ({ isOpen, onClose }) => {
         </header>
 
         <div className="flex-1 min-h-0 flex flex-col bg-white/95 backdrop-blur-sm">
-          <iframe
-            title="RSVP — Joshua and Heece"
-            src={RSVP_FORM_EMBED_URL}
-            className="w-full flex-1 min-h-0 border-0 rsvp-modal-content"
-            allow="fullscreen"
-          />
+          <div className="w-full flex-1 min-h-0 flex items-center justify-center">
+            <p className="text-2xl sm:text-3xl font-foglihten text-burgundy-dark tracking-wide">
+              TO BE ADDED
+            </p>
+          </div>
         </div>
       </div>
     </div>,

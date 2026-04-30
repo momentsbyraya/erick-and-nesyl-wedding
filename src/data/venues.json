@@ -1,26 +1,26 @@
 {
   "ceremony": {
     "ceremonyPhoto": "/assets/images/venues/ceremony.jpg",
-    "name": "San Antonio De Padua Church",
+    "name": "Catholic Church, Calitang El Nido Palawan",
     "address": "",
     "city": "",
     "state": "",
     "zip": "",
-    "time": "2:00 PM",
-    "details": "Schedule: 2:00 PM",
+    "time": "10:00 AM",
+    "details": "Schedule: 10:00 AM",
     "googleMapsUrl": "https://maps.app.goo.gl/xMs2Y3mtFDyQ29DH7",
     "directionsUrl": "https://maps.app.goo.gl/xMs2Y3mtFDyQ29DH7"
   },
   "reception": {
     "receptionPhoto": "/assets/images/venues/reception.png",
-    "name": "Purok Mondalo Barangay Unidad Training Center, Cagwait Surigao del Sur",
+    "name": "To be announced",
     "address": "",
     "city": "",
     "state": "",
     "zip": "",
-    "time": "5:00 PM",
-    "details": "Schedule: 5:00 PM onwards",
-    "landmark": "Same venue as ceremony",
+    "time": "12:00 PM",
+    "details": "Schedule: 12:00 PM",
+    "landmark": "To be announced",
     "googleMapsUrl": "https://maps.app.goo.gl/FVmFZ5cE1wSyvj237",
     "directionsUrl": "https://maps.app.goo.gl/FVmFZ5cE1wSyvj237"
   }

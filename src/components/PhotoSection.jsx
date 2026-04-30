@@ -21,9 +21,9 @@ const PhotoSection = ({
   
   // Default images if none provided
   const defaultImages = [
-    { src: '/assets/images/prenup/APA_0891.JPG', alt: 'Photo 1', label: 'Memories' },
-    { src: '/assets/images/prenup/APA_0891.JPG', alt: 'Photo 2', label: 'Together' },
-    { src: '/assets/images/prenup/APA_0891.JPG', alt: 'Photo 3', label: 'Love' }
+    { src: '/assets/images/prenup/TET03617.jpg', alt: 'Photo 1', label: 'Memories' },
+    { src: '/assets/images/prenup/TET04120.jpg', alt: 'Photo 2', label: 'Together' },
+    { src: '/assets/images/prenup/TET04239.jpg', alt: 'Photo 3', label: 'Love' }
   ]
   const displayImages = images.length > 0 ? images : defaultImages
   

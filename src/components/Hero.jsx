@@ -1,11 +1,9 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useRef, useEffect } from 'react'
 import { gsap } from 'gsap'
-import { Play, Pause } from 'lucide-react'
 import { couple, venues, audio } from '../data'
 import { themeConfig } from '../config/themeConfig'
 
 const Hero = () => {
-  const [isPlaying, setIsPlaying] = useState(false)
   const audioRef = useRef(null)
   
   // Refs for animated elements
@@ -16,7 +14,6 @@ const Hero = () => {
   const brideLastNameRef = useRef(null)
   const dateRef = useRef(null)
   const venueRef = useRef(null)
-  const playButtonRef = useRef(null)
 
   const formatDate = () => {
     const { day, year, month } = couple.wedding
@@ -28,18 +25,6 @@ const Hero = () => {
 
   const venueName = venues.ceremony.name
 
-  const togglePlayPause = () => {
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause()
-        setIsPlaying(false)
-      } else {
-        audioRef.current.play()
-        setIsPlaying(true)
-      }
-    }
-  }
-
   useEffect(() => {
     // Set initial hidden states
     gsap.set(groomFirstNameRef.current, { opacity: 0, y: 30 })
@@ -49,7 +34,6 @@ const Hero = () => {
     gsap.set(brideLastNameRef.current, { opacity: 0, y: 30 })
     gsap.set(dateRef.current, { opacity: 0, y: 20 })
     gsap.set(venueRef.current, { opacity: 0, y: 20 })
-    gsap.set(playButtonRef.current, { opacity: 0, scale: 0.8 })
 
     // Create timeline for sequential animations (top → bottom: date/venue, then names)
     const tl = gsap.timeline({ delay: 0.3 })
@@ -116,15 +100,6 @@ const Hero = () => {
       }, "-=0.4")
     }
 
-    // 6. Play button
-    if (playButtonRef.current) {
-      tl.to(playButtonRef.current, {
-        opacity: 1,
-        scale: 1,
-        duration: 0.5,
-        ease: "back.out(1.7)"
-      }, "-=0.2")
-    }
   }, [])
 
   return (
@@ -134,14 +109,13 @@ const Hero = () => {
         ref={audioRef}
         src={audio.background}
         loop
-        onEnded={() => setIsPlaying(false)}
       />
 
       {/* Slight bleed past edges + overflow-hidden hides subpixel gaps vs parent / next section */}
       <img
-        src="/assets/images/prenup/DSC01018.jpg"
-        alt="Heece and Joshua"
-        className="absolute left-1/2 top-1/2 h-[102%] w-[102%] max-w-none -translate-x-1/2 -translate-y-1/2 object-cover object-[50%_18%] sm:object-[50%_22%] md:object-[50%_25%] lg:object-[50%_27%] xl:object-[50%_28%]"
+        src="/assets/images/prenup/TET04315.jpg"
+        alt="Erick and Nesyl"
+        className="absolute left-1/2 top-1/2 h-[102%] w-[102%] max-w-none -translate-x-1/2 -translate-y-1/2 object-cover object-[46%_18%] sm:object-[46%_22%] md:object-[46%_25%] lg:object-[46%_27%] xl:object-[46%_28%]"
         fetchPriority="high"
         decoding="async"
       />
@@ -201,20 +175,6 @@ const Hero = () => {
         <rect width="100%" height="100%" fill="url(#bottomGradient)" filter="url(#heroBlurBottom)" />
       </svg>
 
-      {/* Play/Pause Button - Bottom Right */}
-      <button 
-        ref={playButtonRef}
-        onClick={togglePlayPause}
-        className="absolute bottom-4 sm:bottom-6 md:bottom-8 right-4 sm:right-6 md:right-8 z-30 w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-full bg-white/90 hover:bg-white transition-colors duration-200 flex items-center justify-center shadow-lg cursor-pointer"
-        style={{ pointerEvents: 'auto' }}
-      >
-        {isPlaying ? (
-          <Pause size={18} className="sm:w-5 sm:h-5 md:w-6 md:h-6 text-burgundy-wine" fill="#5A1E2A" />
-        ) : (
-          <Play size={18} className="sm:w-5 sm:h-5 md:w-6 md:h-6 text-burgundy-wine ml-1" fill="#5A1E2A" />
-        )}
-      </button>
-
       {/* Couple names — bottom (extra bottom padding for play control) */}
       <div className="absolute bottom-0 left-0 right-0 pb-10 sm:pb-12 md:pb-14 lg:pb-16 px-4 sm:px-6 md:px-8 z-20">
         <div className="max-w-4xl mx-auto text-center">
@@ -227,7 +187,7 @@ const Hero = () => {
                 {couple.groom.lastName}
               </p>
             </div>
-            <p ref={andRef} className="caudex-bold text-sm sm:text-base md:text-lg lg:text-xl uppercase leading-tight my-2 sm:my-3" style={{ color: '#000000' }}>
+            <p ref={andRef} className="caudex-bold text-sm sm:text-base md:text-lg lg:text-xl uppercase leading-tight my-2 sm:my-3" style={{ color: '#FFFFFF' }}>
               AND
             </p>
             <div>

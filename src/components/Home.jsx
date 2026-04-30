@@ -47,8 +47,8 @@ const Home = ({ onOpenRSVP }) => {
       </div>
 
       <FullBleedPhoto
-        src="/assets/images/prenup/JGM04266.jpg"
-        alt="Joshua and Heece"
+        src="/assets/images/prenup/TET03579.jpg"
+        alt="Erick and Nesyl"
       />
 
       {/* Content */}
@@ -60,10 +60,10 @@ const Home = ({ onOpenRSVP }) => {
       </div>
 
       <FullBleedPhotoSplit
-        leftSrc="/assets/images/prenup/JGM04170.jpg"
-        rightSrc="/assets/images/prenup/JGM03897.jpg"
-        leftAlt="Joshua and Heece"
-        rightAlt="Joshua and Heece"
+        leftSrc="/assets/images/prenup/TET03617.jpg"
+        rightSrc="/assets/images/prenup/TET04315.jpg"
+        leftAlt="Erick and Nesyl"
+        rightAlt="Erick and Nesyl"
       />
 
       {/* Entourage Section - between Order of Events and Dress Code */}
@@ -71,10 +71,10 @@ const Home = ({ onOpenRSVP }) => {
 
       <FullBleedPhotoSplit
         invertLayout
-        leftSrc="/assets/images/prenup/prenup5.jpg"
-        rightSrc="/assets/images/prenup/JGM04213.jpg"
-        leftAlt="Joshua and Heece"
-        rightAlt="Joshua and Heece"
+        leftSrc="/assets/images/prenup/TET04120.jpg"
+        rightSrc="/assets/images/prenup/TET03960.jpg"
+        leftAlt="Erick and Nesyl"
+        rightAlt="Erick and Nesyl"
       />
 
       <div className="relative z-20 flex items-center justify-center pt-12">
@@ -84,8 +84,8 @@ const Home = ({ onOpenRSVP }) => {
       </div>
 
       <FullBleedPhoto
-        src="/assets/images/prenup/DSC01046.jpg"
-        alt="Joshua and Heece"
+        src="/assets/images/prenup/TET04239.jpg"
+        alt="Erick and Nesyl"
       />
 
       <div className="relative z-20 flex items-center justify-center">
@@ -95,10 +95,10 @@ const Home = ({ onOpenRSVP }) => {
       </div>
 
       <FullBleedPhotoSplit
-        leftSrc="/assets/images/prenup/prenup2.jpg"
-        rightSrc="/assets/images/prenup/JGM04077.jpg"
-        leftAlt="Joshua and Heece"
-        rightAlt="Joshua and Heece"
+        leftSrc="/assets/images/prenup/TET03960.jpg"
+        rightSrc="/assets/images/prenup/TET04239.jpg"
+        leftAlt="Erick and Nesyl"
+        rightAlt="Erick and Nesyl"
       />
 
       <div className="relative z-20 flex items-center justify-center">

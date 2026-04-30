@@ -1,16 +1,24 @@
 {
   "faqData": [
     {
-      "question": "Can I bring a plus one?",
-      "answer": "No, we are unable to accommodate additional guests. To keep our celebration intimate and simple, we kindly ask that guests attend as indicated on their invitation. We truly appreciate your understanding and can't wait to celebrate with you."
+      "question": "What time does the ceremony start?",
+      "answer": "The wedding ceremony starts at 10:00 AM."
     },
     {
-      "question": "What to wear?",
-      "answer": "Our dress code is Burgundy Red Wine or a shade close to that color. We'd love our guests to dress in smart casual or semi-formal attire in this palette. Please avoid wearing white so the bride can shine."
+      "question": "What is the dress code?",
+      "answer": "you can wear casual or formal attire with the touch of our wedding motif"
     },
     {
       "question": "Where's the reception?",
-      "answer": "Purok Mondalo Barangay Unidad Training Center, Cagwait Surigao del Sur"
+      "answer": "To be announced"
+    },
+    {
+      "question": "Is RSVP required?",
+      "answer": "Yes, kindly RSVP on or before May 18, 2026."
+    },
+    {
+      "question": "Can I bring a plus one?",
+      "answer": "Please follow the name(s) written on your invitation."
     }
   ]
 }

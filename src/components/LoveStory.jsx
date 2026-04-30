@@ -22,13 +22,11 @@ const LoveStory = () => {
   // Split content into paragraphs
   const paragraphs = loveStory.content.split('\n\n').filter(p => p.trim())
 
-  // Polaroid images — alternating 1 / 2 / 1 per paragraph (3 paragraphs → 4 images).
-  // Intentionally different from Gallery grid + Home FullBleedPhoto / FullBleedPhotoSplit.
+  // Minimal prenup set (user-selected photos only).
   const polaroidImages = [
-    '/assets/images/prenup/JGM03967.jpg',
-    '/assets/images/prenup/JGM04089.jpg',
-    '/assets/images/prenup/DSC01025.jpg',
-    '/assets/images/prenup/JGM04140.jpg',
+    '/assets/images/prenup/TET03617.jpg',
+    '/assets/images/prenup/TET04120.jpg',
+    '/assets/images/prenup/TET04239.jpg',
   ]
 
   useEffect(() => {
@@ -206,7 +204,7 @@ const LoveStory = () => {
 
   let imageCursor = 0
   const storySegments = paragraphs.map((paragraph, index) => {
-    const imageCount = index % 2 === 0 ? 1 : 2
+    const imageCount = index < polaroidImages.length ? 1 : 0
     const startImageIndex = imageCursor
     const imageIndices = Array.from({ length: imageCount }, (_, i) => startImageIndex + i)
     imageCursor += imageCount

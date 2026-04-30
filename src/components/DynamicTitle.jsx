@@ -2,8 +2,8 @@ import React from 'react'
 import { Helmet } from 'react-helmet-async'
 import { couple } from '../data'
 
-const OG_IMAGE_PATH = '/assets/images/prenup/JGM04213.jpg'
-const FAVICON_PATH = '/assets/images/prenup/DSC01018.jpg'
+const OG_IMAGE_PATH = '/assets/images/prenup/TET04239.jpg'
+const FAVICON_PATH = '/assets/images/prenup/TET03617.jpg'
 
 const DynamicTitle = () => {
   const weddingDate = new Date(couple.wedding.date).toLocaleDateString('en-US', {

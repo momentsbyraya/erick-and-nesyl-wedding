@@ -15,26 +15,14 @@ const Gallery = () => {
   const modalRef = useRef(null)
   const overlayRef = useRef(null)
   const contentRef = useRef(null)
-  // Avoid overlap with Hero, full-bleed/split on Home, and Love Story polaroids.
-  // Includes former “unused” prenup*.jpg (1, 6, 9, 10, 12) only used here.
-  // Grid: repeating 10-cell pattern — full, 1+2, 2+1, full, 1+2, 2+1.
+  // Curated minimal prenup set (user-selected photos only).
   const galleryImages = [
-    '/assets/images/prenup/JGM04189.jpg',
-    '/assets/images/prenup/DSC00983.jpg',
-    '/assets/images/prenup/JGM04100.jpg',
-    '/assets/images/prenup/JGM03893.jpg',
-    '/assets/images/prenup/DSC01113.jpg',
-    '/assets/images/prenup/JGM04241.jpg',
-    '/assets/images/prenup/DSC01020.jpg',
-    '/assets/images/prenup/JGM04062.jpg',
-    '/assets/images/prenup/DSC01026.jpg',
-    '/assets/images/prenup/DSC01080.jpg',
-    '/assets/images/prenup/prenup1.jpg',
-    '/assets/images/prenup/prenup6.jpg',
-    '/assets/images/prenup/prenup9.jpg',
-    '/assets/images/prenup/prenup10.jpg',
-    '/assets/images/prenup/prenup12.jpg',
-    '/assets/images/prenup/JGM04077.jpg',
+    '/assets/images/prenup/TET03579.jpg',
+    '/assets/images/prenup/TET03617.jpg',
+    '/assets/images/prenup/TET04315.jpg',
+    '/assets/images/prenup/TET04120.jpg',
+    '/assets/images/prenup/TET03960.jpg',
+    '/assets/images/prenup/TET04239.jpg',
   ]
 
   const gridColumnPattern = [
@@ -52,9 +40,7 @@ const Gallery = () => {
 
   /** Thumbnail crop tweaks (object-fit: cover) */
   const thumbObjectPosition = (src) => {
-    if (src.includes('prenup1.jpg')) return 'center top'
-    if (src.includes('JGM04241.jpg')) return 'center 38%'
-    if (src.includes('JGM04077.jpg')) return 'center 45%'
+    if (src.includes('TET04239.jpg')) return 'center 38%'
     return 'center center'
   }
 
@@ -198,14 +184,8 @@ const Gallery = () => {
         <div className="grid grid-cols-3 gap-2 sm:gap-3 md:gap-4" style={{ gridAutoRows: '1fr' }}>
           {galleryImages.map((image, index) => {
             const gridColumn = gridColumnPattern[index % gridColumnPattern.length]
-            const isJgm03893 = image.includes('JGM03893.jpg')
-            const isDsc00983 = image.includes('DSC00983.jpg')
-            const responsiveObjectClass = isJgm03893
-              ? 'object-center md:object-[center_38%]'
-              : isDsc00983
-                ? 'object-center min-[992px]:object-[center_18%]'
-                : ''
-            const skipInlineObjectPosition = isJgm03893 || isDsc00983
+            const responsiveObjectClass = ''
+            const skipInlineObjectPosition = false
 
             return (
               <div

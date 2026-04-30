@@ -1,20 +1,20 @@
 {
   "mainDressCode": {
     "title": "Attire Guide",
-    "description": "Formal attire in burgundy red wine colors on our special day."
+    "description": "Cream, beige, gray, black and navy (can add also touch of white)."
   },
   "sections": [
     {
       "title": "Principal Sponsors",
       "type": "text",
-      "description": "For Ninongs: Formal suit in black. For Ninangs: Floor-length gown in burgundy red wine.",
+      "description": "For Ninongs: Formal suit in black, gray, or navy. For Ninangs: Floor-length gown in cream, beige, gray, black, or navy (with a touch of white).",
       "image": "/assets/images/dresscode/sponsors.png"
     },
     {
       "title": "Guests",
       "type": "image",
-      "shortDescription": "Ladies: Modest dress. Men: Long sleeves.",
-      "description": "Ladies: Modest dress. Men: Long sleeves.",
+      "shortDescription": "Ladies: Modest dress. Men: Long sleeves in cream, beige, gray, black, or navy (touch of white allowed).",
+      "description": "Ladies: Modest dress. Men: Long sleeves in cream, beige, gray, black, or navy (touch of white allowed).",
       "image": "/assets/images/dresscode/guests.png"
     }
   ]

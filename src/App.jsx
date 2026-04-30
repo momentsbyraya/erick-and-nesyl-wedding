@@ -5,7 +5,7 @@ import Home from './components/Home'
 import Footer from './components/Footer'
 import RSVPModal from './components/RSVPModal'
 import DynamicTitle from './components/DynamicTitle'
-// import OpeningScreen from './components/OpeningScreen'
+import OpeningScreen from './components/OpeningScreen'
 import Loader from './components/Loader'
 import ScrollToTop from './components/ScrollToTop'
 import Details from './components/pages/Details'
@@ -25,13 +25,13 @@ function AppContent() {
     const preloadImages = async () => {
       const criticalImages = [
         // Hero image - most important
-        '/assets/images/prenup/DSC01018.jpg',  // Hero image
-        // NavIndex images - all prenup photos used on home page
-        '/assets/images/prenup/Proposal 5.jpg',  // Polaroid image
-        '/assets/images/prenup/Proposal 1.jpg',  // RSVP container
-        '/assets/images/prenup/Proposal 2.jpg',  // Moments polaroid 1
-        '/assets/images/prenup/Proposal 4.jpg',  // Moments polaroid 2
-        '/assets/images/prenup/prenup11.jpg',   // Save The Date countdown background
+        '/assets/images/prenup/TET04315.jpg', // Hero image
+        // Curated prenup set used across sections
+        '/assets/images/prenup/TET03617.jpg',
+        '/assets/images/prenup/TET03579.jpg',
+        '/assets/images/prenup/TET04120.jpg',
+        '/assets/images/prenup/TET03960.jpg',
+        '/assets/images/prenup/TET04239.jpg',
         // NavIndex graphics - all decorative elements
         '/assets/images/graphics/dusty-blue.png',
         '/assets/images/graphics/flower-1.png',
@@ -114,7 +114,7 @@ function AppContent() {
             // Check if we're on the home page
             if (window.location.pathname === '/' || window.location.pathname === '') {
               // Look for hero image
-              const heroImg = document.querySelector('img[src="/assets/images/prenup/DSC01018.jpg"]')
+              const heroImg = document.querySelector('img[src="/assets/images/prenup/TET04315.jpg"]')
               if (heroImg) {
                 // Check if image is loaded and visible
                 if (heroImg.complete && heroImg.naturalHeight > 0) {
@@ -190,11 +190,11 @@ function AppContent() {
         </div>
       )}
       {/* OpeningScreen - shows after loading, before invitation */}
-      {/* {!isLoading && !showInvitation && (
+      {!isLoading && !showInvitation && (
         <OpeningScreen onEnvelopeOpen={handleEnvelopeOpen} />
-      )} */}
+      )}
       {/* Main content - shows after invitation is opened (stamp clicked) */}
-      {!isLoading && (
+      {!isLoading && showInvitation && (
         <>
           <Routes>
             <Route path="/" element={<Home onOpenRSVP={() => setIsRSVPModalOpen(true)} />} />

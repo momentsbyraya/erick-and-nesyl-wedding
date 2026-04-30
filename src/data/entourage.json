@@ -1,120 +1,120 @@
 {
   "couple": {
-    "groom": { "name": "JOSHUA LACERNA ANDRES" },
-    "bride": { "name": "HEECE CABADONGA MOLINA" }
+    "groom": { "name": "LOREM IPSUM" },
+    "bride": { "name": "DOLOR SIT" }
   },
   "parents": {
     "groom": {
-      "father": "Mr. Lando B. Macheca",
-      "mother": "Mrs. Cristita L. Macheca"
+      "father": "Mr. Lorem Ipsum",
+      "mother": "Mrs. Dolor Sit"
     },
     "bride": {
       "father": "",
-      "mother": "Nelly C. Molina"
+      "mother": "Amet Consectetur"
     }
   },
   "entourageList": [
     {
       "category": "Principal Sponsors",
       "ninong": [
-        "Mr. Allan B. Mondalo",
-        "Mr. Crisente F. Bernales",
-        "Mr. Francisco Duque dela Casa",
-        "Mr. Erlindo L. Sala",
-        "Mr. Lito B. Macheca",
-        "Mr. Ronie Breviescas",
-        "Mr. Vironico Macheca",
-        "Mr. Rogelio M. Nozares Sr.",
-        "Mr. Rogelio Santa",
-        "Mr. Elibert T. Momo",
-        "Mr. Eddie Logronio",
-        "Mr. Lolito L. Pelaez",
-        "Mr. Jerry Pepino",
-        "Mr. Fernando Liparanon"
+        "Mr. Lorem Ipsum",
+        "Mr. Dolor Sit",
+        "Mr. Amet Consectetur",
+        "Mr. Adipiscing Elit",
+        "Mr. Sed Do",
+        "Mr. Eiusmod Tempor",
+        "Mr. Incididunt Ut",
+        "Mr. Labore Et",
+        "Mr. Dolore Magna",
+        "Mr. Aliqua Enim",
+        "Mr. Minim Veniam",
+        "Mr. Quis Nostrud",
+        "Mr. Exercitation Ullamco",
+        "Mr. Laboris Nisi"
       ],
       "ninang": [
-        "Ms. Anji Prado",
-        "Mrs. Chona Eunice S. Jarina",
-        "Mrs. Irene Sala-Brucheseifer",
-        "Mrs. Julieta Tolentino",
-        "Mrs. Vicheryl D. Tamagos",
-        "Mrs. Ma. Rizalyn Sala-Jung",
-        "Mrs. Francisca Lagrama",
-        "Ms. Joecilyn L. Sala",
-        "Mrs. Joelyn T. Galgo",
-        "Mrs. Lelibeth C. Sala",
-        "Mrs. Juanita Baito",
-        "Mrs. Myrna U. Evilla",
-        "Mrs. Arlene S. Estrada",
-        "Mrs. Rowena S. Sanchez",
-        "Mrs. Elineta Tolentino"
+        "Ms. Lorem Ipsum",
+        "Mrs. Dolor Sit",
+        "Mrs. Amet Consectetur",
+        "Mrs. Adipiscing Elit",
+        "Mrs. Sed Do",
+        "Mrs. Eiusmod Tempor",
+        "Mrs. Incididunt Ut",
+        "Ms. Labore Et",
+        "Mrs. Dolore Magna",
+        "Mrs. Aliqua Enim",
+        "Mrs. Minim Veniam",
+        "Mrs. Quis Nostrud",
+        "Mrs. Exercitation Ullamco",
+        "Mrs. Laboris Nisi",
+        "Mrs. Ut Aliquip"
       ]
     },
     {
       "category": "Bestman",
-      "names": ["Mr. Christian Denzo P. Lacerna"]
+      "names": ["Mr. Commodo Consequat"]
     },
     {
       "category": "Maid of Honor",
-      "names": ["Ms. Diocel A. Alvizo"]
+      "names": ["Ms. Duis Aute"]
     },
     {
       "category": "Candle Sponsors",
-      "names": ["Mr. Joevanny Gabenite", "Mrs. Merlinda V. Sala"]
+      "names": ["Mr. Irure Dolor", "Mrs. Reprehenderit Voluptate"]
     },
     {
       "category": "Cord Sponsors",
-      "names": ["Mr. Jay-ar Macheca", "Ms. Ivy Michelle S. Mantilla"]
+      "names": ["Mr. Velit Esse", "Ms. Cillum Dolore"]
     },
     {
       "category": "Veil Sponsors",
-      "names": ["Mr. Dave S. Mantilla", "Mrs. Karylle S. Acevedo"]
+      "names": ["Mr. Eu Fugiat", "Mrs. Nulla Pariatur"]
     },
     {
       "category": "Secondary Sponsors",
       "groomsmen": [
-        "Mr. Kiven Sala",
-        "Mr. Hero Macheca",
-        "Mr. Christopher Sala",
-        "Aries Deliger",
-        "Ethan Bobieles",
-        "Fritz Ivan Miguel",
-        "Jade Cabadonga",
-        "Joseff Gertrude C. Macheca"
+        "Mr. Excepteur Sint",
+        "Mr. Occaecat Cupidatat",
+        "Mr. Non Proident",
+        "Sunt In Culpa",
+        "Qui Officia",
+        "Deserunt Mollit",
+        "Anim Id",
+        "Est Laborum"
       ],
       "bridesmaid": [
-        "Ms. Samantha G. Paynandos",
-        "Ms. Angel Queen Pingkay",
-        "Ms. Vilmalyn M. Sanchez",
-        "Ms. Jane Mary Macheca",
-        "Miss Calexta Tiffany Barriga",
-        "Miss Ryza L. Macheca",
-        "Miss Dianne L. Macheca",
-        "Miss Maika Inotan"
+        "Ms. Lorem Uno",
+        "Ms. Ipsum Duo",
+        "Ms. Dolor Tres",
+        "Ms. Sit Quattuor",
+        "Ms. Amet Quinque",
+        "Ms. Consectetur Sex",
+        "Ms. Adipiscing Septem",
+        "Ms. Elit Octo"
       ]
     },
     {
       "category": "Ring Bearer",
-      "names": ["Sulaiman Molina"]
+      "names": ["Placeholder Alpha"]
     },
     {
       "category": "Bible Bearer",
-      "names": ["Joecary Jr. Gabenite"]
+      "names": ["Placeholder Beta"]
     },
     {
       "category": "Coin Bearer",
-      "names": ["Kerzon Mantilla"]
+      "names": ["Placeholder Gamma"]
     },
     {
       "category": "Flower Boys",
-      "names": ["Jhan Flore Noel M. Villarina"]
+      "names": ["Placeholder Delta"]
     },
     {
       "category": "Flower Girls",
       "names": [
-        "Andrea M. De Jesus",
-        "Kimberly L. Macheca",
-        "Kathaleeyah Blaire L. Subricaray"
+        "Placeholder Epsilon",
+        "Placeholder Zeta",
+        "Placeholder Eta"
       ]
     }
   ]
