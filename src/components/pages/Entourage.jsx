@@ -401,6 +401,7 @@ const Entourage = () => {
   const juniorFlowerGirls = entourage.entourageList.find(item => item.category === "Junior Flower Girls")
   const littleFlowerGirls = entourage.entourageList.find(item => item.category === "Little Flower Girls")
   const flowerGirls = entourage.entourageList.find(item => item.category === "Flower Girls")
+  const specialGuests = entourage.entourageList.find(item => item.category === "Special Guests")
 
   return (
     <>
@@ -517,10 +518,10 @@ const Entourage = () => {
               {/* PRINCIPAL SPONSORS - Two columns */}
               {principalSponsors && (
                 <div ref={principalSponsorsRef}>
-                  <h3 className="text-lg sm:text-xl md:text-2xl imperial-script-regular font-bold mb-6 text-center" style={{ color: '#5A1E2A' }}>Principal sponsors</h3>
+                  <h3 className="text-lg sm:text-xl md:text-2xl caudex-bold font-bold mb-6 text-center" style={{ color: '#5A1E2A' }}>TO STAND AS principal WITNESS TO OUR VOWS</h3>
                   <div className="flex flex-row gap-6 sm:gap-10 justify-center items-start">
                     <div className="flex-1 min-w-0">
-                      <p className="text-[10px] sm:text-[13px] md:text-[15px] caudex-bold mb-2 text-right uppercase" style={{ color: '#5A1E2A' }}>Ninong</p>
+                      <p className="text-[10px] sm:text-[13px] md:text-[15px] caudex-bold mb-2 text-right" style={{ color: '#5A1E2A' }}> </p>
                       <div className="space-y-1.5">
                         {(principalSponsors.ninong || []).map((name, index) => (
                           <p key={index} className="ninong-item text-[7.5px] sm:text-[11px] md:text-[13px] font-poppins uppercase text-burgundy-dark text-right">{name}</p>
@@ -528,7 +529,7 @@ const Entourage = () => {
                       </div>
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="text-[10px] sm:text-[13px] md:text-[15px] caudex-bold mb-2 text-left uppercase" style={{ color: '#5A1E2A' }}>Ninang</p>
+                      <p className="text-[10px] sm:text-[13px] md:text-[15px] caudex-bold mb-2 text-left" style={{ color: '#5A1E2A' }}> </p>
                       <div className="space-y-1.5">
                         {(principalSponsors.ninang || []).map((name, index) => (
                           <p key={index} className="ninang-item text-[7.5px] sm:text-[11px] md:text-[13px] font-poppins uppercase text-burgundy-dark text-left">{name}</p>
@@ -540,7 +541,9 @@ const Entourage = () => {
               )}
 
               {/* BEST MAN | MAID OF HONOR */}
-              <div className="flex flex-row gap-6 sm:gap-10 justify-center items-start">
+              <div>
+                <h3 className="text-lg sm:text-xl md:text-2xl caudex-bold font-bold mb-3 text-center" style={{ color: '#5A1E2A' }}>TO ASSIST US IN OUR NEEDS:</h3>
+                <div className="flex flex-row gap-6 sm:gap-10 justify-center items-start">
                 {bestman && (
                   <div ref={bestmanRef} className="flex-1 min-w-0">
                     <p className="text-[10px] sm:text-[13px] md:text-[15px] caudex-bold mb-2 text-right uppercase" style={{ color: '#5A1E2A' }}>Best Man</p>
@@ -557,88 +560,99 @@ const Entourage = () => {
                     ))}
                   </div>
                 )}
+                </div>
               </div>
 
               {/* SECONDARY SPONSORS - Centered title, then three centered blocks, then Groomsmen|Bridesmaids */}
               <div>
-                <h3 className="text-lg sm:text-xl md:text-2xl imperial-script-regular font-bold mb-8 text-center" style={{ color: '#5A1E2A' }}>Secondary sponsors</h3>
+                <h3 className="text-lg sm:text-xl md:text-2xl caudex-bold font-bold mb-8 text-center uppercase" style={{ color: '#5A1E2A' }}>Secondary Sponsor</h3>
 
-                {candleSponsors && (
-                  <div ref={candleSponsorsRef} className="mb-8 flex flex-col gap-1 justify-center items-center">
-                    <p className="text-[10px] sm:text-[13px] md:text-[15px] caudex-bold mb-2 text-center uppercase" style={{ color: '#5A1E2A' }}>Candle</p>
-                    {candleSponsors.names && candleSponsors.names.map((name, index) => (
-                      <p key={index} className="text-[7.5px] sm:text-[11px] md:text-[13px] font-poppins uppercase text-burgundy-dark text-center">{name}</p>
-                    ))}
-                  </div>
-                )}
+                <div className="mb-8 flex flex-row gap-6 sm:gap-10 justify-center items-start">
+                  {candleSponsors && (
+                    <div ref={candleSponsorsRef} className="flex-1 min-w-0 flex flex-col gap-1 items-center">
+                      <p className="text-[10px] sm:text-[13px] md:text-[15px] imperial-script-regular mb-1 text-center" style={{ color: '#5A1E2A' }}>Candle</p>
+                      <p className="text-[10px] sm:text-[13px] md:text-[15px] caudex-bold mb-2 text-center uppercase" style={{ color: '#5A1E2A' }}>To Light Our Path</p>
+                      {candleSponsors.names?.[0] && <p className="text-[7.5px] sm:text-[11px] md:text-[13px] font-poppins uppercase text-burgundy-dark text-center">{candleSponsors.names[0]}</p>}
+                      <p className="text-[7.5px] sm:text-[11px] md:text-[13px] font-poppins uppercase text-burgundy-dark text-center">And</p>
+                      {candleSponsors.names?.[1] && <p className="text-[7.5px] sm:text-[11px] md:text-[13px] font-poppins uppercase text-burgundy-dark text-center">{candleSponsors.names[1]}</p>}
+                    </div>
+                  )}
+                  {cordSponsors && (
+                    <div ref={cordSponsorsRef} className="flex-1 min-w-0 flex flex-col gap-1 items-center">
+                      <p className="text-[10px] sm:text-[13px] md:text-[15px] imperial-script-regular mb-1 text-center" style={{ color: '#5A1E2A' }}>Cord</p>
+                      <p className="text-[10px] sm:text-[13px] md:text-[15px] caudex-bold mb-2 text-center uppercase" style={{ color: '#5A1E2A' }}>To Clothe Us As One</p>
+                      {cordSponsors.names?.[0] && <p className="text-[7.5px] sm:text-[11px] md:text-[13px] font-poppins uppercase text-burgundy-dark text-center">{cordSponsors.names[0]}</p>}
+                      <p className="text-[7.5px] sm:text-[11px] md:text-[13px] font-poppins uppercase text-burgundy-dark text-center">And</p>
+                      {cordSponsors.names?.[1] && <p className="text-[7.5px] sm:text-[11px] md:text-[13px] font-poppins uppercase text-burgundy-dark text-center">{cordSponsors.names[1]}</p>}
+                    </div>
+                  )}
+                </div>
+
                 {veilSponsors && (
                   <div ref={veilSponsorsRef} className="mb-8 flex flex-col gap-1 justify-center items-center">
-                    <p className="text-[10px] sm:text-[13px] md:text-[15px] caudex-bold mb-2 text-center uppercase" style={{ color: '#5A1E2A' }}>Veil</p>
-                    {veilSponsors.names && veilSponsors.names.map((name, index) => (
-                      <p key={index} className="text-[7.5px] sm:text-[11px] md:text-[13px] font-poppins uppercase text-burgundy-dark text-center">{name}</p>
-                    ))}
-                  </div>
-                )}
-                {cordSponsors && (
-                  <div ref={cordSponsorsRef} className="mb-8 flex flex-col gap-1 justify-center items-center">
-                    <p className="text-[10px] sm:text-[13px] md:text-[15px] caudex-bold mb-2 text-center uppercase" style={{ color: '#5A1E2A' }}>Cord</p>
-                    {cordSponsors.names && cordSponsors.names.map((name, index) => (
-                      <p key={index} className="text-[7.5px] sm:text-[11px] md:text-[13px] font-poppins uppercase text-burgundy-dark text-center">{name}</p>
-                    ))}
+                    <p className="text-[10px] sm:text-[13px] md:text-[15px] imperial-script-regular mb-1 text-center" style={{ color: '#5A1E2A' }}>Veil</p>
+                    <p className="text-[10px] sm:text-[13px] md:text-[15px] caudex-bold mb-1 text-center uppercase" style={{ color: '#5A1E2A' }}>To Bind Us Together</p>
+                    {veilSponsors.names?.[0] && <p className="text-[7.5px] sm:text-[11px] md:text-[13px] font-poppins uppercase text-burgundy-dark text-center">{veilSponsors.names[0]}</p>}
+                    <p className="text-[7.5px] sm:text-[11px] md:text-[13px] font-poppins uppercase text-burgundy-dark text-center">And</p>
+                    {veilSponsors.names?.[1] && <p className="text-[7.5px] sm:text-[11px] md:text-[13px] font-poppins uppercase text-burgundy-dark text-center">{veilSponsors.names[1]}</p>}
                   </div>
                 )}
 
                 {secondarySponsors && (
-                  <div ref={secondarySponsorsRef} className="flex flex-row gap-6 sm:gap-10 justify-center items-start">
+                  <div>
+                    <h3 className="text-lg sm:text-xl md:text-2xl caudex-bold font-bold mb-6 text-center uppercase" style={{ color: '#5A1E2A' }}>To Guide Us On Our Way Ahead</h3>
+                    <div ref={secondarySponsorsRef} className="flex flex-row gap-6 sm:gap-10 justify-center items-start">
                     <div className="flex-1 min-w-0">
-                      <p className="text-[10px] sm:text-[13px] md:text-[15px] caudex-bold mb-2 text-right uppercase" style={{ color: '#5A1E2A' }}>Groomsmen</p>
                       <div className="space-y-1.5">
-                        {secondarySponsors.groomsmen && secondarySponsors.groomsmen.map((name, index) => (
+                        {secondarySponsors.bridesmaid && secondarySponsors.bridesmaid.map((name, index) => (
                           <p key={index} className="groomsmen-item text-[7.5px] sm:text-[11px] md:text-[13px] font-poppins uppercase text-burgundy-dark text-right">{name}</p>
                         ))}
                       </div>
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="text-[10px] sm:text-[13px] md:text-[15px] caudex-bold mb-2 text-left uppercase" style={{ color: '#5A1E2A' }}>Bridesmaids</p>
                       <div className="space-y-1.5">
-                        {secondarySponsors.bridesmaid && secondarySponsors.bridesmaid.map((name, index) => (
+                        {secondarySponsors.groomsmen && secondarySponsors.groomsmen.map((name, index) => (
                           <p key={index} className="bridesmaids-item text-[7.5px] sm:text-[11px] md:text-[13px] font-poppins uppercase text-burgundy-dark text-left">{name}</p>
                         ))}
                       </div>
+                    </div>
                     </div>
                   </div>
                 )}
               </div>
 
               {/* RING BEARER */}
-              {ringBearer && (
-                <div ref={ringBearerRef} className="flex flex-col gap-1 justify-center items-center">
-                  <p className="text-[10px] sm:text-[13px] md:text-[15px] caudex-bold mb-2 text-center uppercase" style={{ color: '#5A1E2A' }}>Ring Bearer</p>
-                  {ringBearer.names && ringBearer.names.map((name, index) => (
-                    <p key={index} className="text-[7.5px] sm:text-[11px] md:text-[13px] font-poppins uppercase text-burgundy-dark text-center">{name}</p>
-                  ))}
-                </div>
-              )}
-
               {/* BIBLE BEARER */}
               {bibleBearer && (
                 <div ref={bibleBearerRef} className="flex flex-col gap-1 justify-center items-center">
-                  <p className="text-[10px] sm:text-[13px] md:text-[15px] caudex-bold mb-2 text-center uppercase" style={{ color: '#5A1E2A' }}>Bible Bearer</p>
+                  <p className="text-[10px] sm:text-[13px] md:text-[15px] imperial-script-regular mb-1 text-center" style={{ color: '#5A1E2A' }}>Bible Bearer</p>
+                  <p className="text-[10px] sm:text-[13px] md:text-[15px] caudex-bold mb-1 text-center uppercase" style={{ color: '#5A1E2A' }}>To Carry Our Symbol of Faith</p>
                   {bibleBearer.names && bibleBearer.names.map((name, index) => (
                     <p key={index} className="text-[7.5px] sm:text-[11px] md:text-[13px] font-poppins uppercase text-burgundy-dark text-center">{name}</p>
                   ))}
                 </div>
               )}
 
-              {/* COIN BEARER */}
-              {coinBearer && (
-                <div ref={coinBearerRef} className="flex flex-col gap-1 justify-center items-center">
-                  <p className="text-[10px] sm:text-[13px] md:text-[15px] caudex-bold mb-2 text-center uppercase" style={{ color: '#5A1E2A' }}>Coin Bearer</p>
-                  {coinBearer.names && coinBearer.names.map((name, index) => (
-                    <p key={index} className="text-[7.5px] sm:text-[11px] md:text-[13px] font-poppins uppercase text-burgundy-dark text-center">{name}</p>
-                  ))}
-                </div>
-              )}
+              <div className="flex flex-row gap-6 sm:gap-10 justify-center items-start">
+                {ringBearer && (
+                  <div ref={ringBearerRef} className="flex-1 min-w-0 flex flex-col gap-1 justify-center items-center">
+                    <p className="text-[10px] sm:text-[13px] md:text-[15px] imperial-script-regular mb-1 text-center" style={{ color: '#5A1E2A' }}>Ring Bearer</p>
+                    <p className="text-[10px] sm:text-[13px] md:text-[15px] caudex-bold mb-1 text-center uppercase" style={{ color: '#5A1E2A' }}>To Carry Our Symbol of Love</p>
+                    {ringBearer.names && ringBearer.names.map((name, index) => (
+                      <p key={index} className="text-[7.5px] sm:text-[11px] md:text-[13px] font-poppins uppercase text-burgundy-dark text-center">{name}</p>
+                    ))}
+                  </div>
+                )}
+                {coinBearer && (
+                  <div ref={coinBearerRef} className="flex-1 min-w-0 flex flex-col gap-1 justify-center items-center">
+                    <p className="text-[10px] sm:text-[13px] md:text-[15px] imperial-script-regular mb-1 text-center" style={{ color: '#5A1E2A' }}>Coin Bearer</p>
+                    <p className="text-[10px] sm:text-[13px] md:text-[15px] caudex-bold mb-1 text-center uppercase" style={{ color: '#5A1E2A' }}>To Carry Our Symbol of Treasures</p>
+                    {coinBearer.names && coinBearer.names.map((name, index) => (
+                      <p key={index} className="text-[7.5px] sm:text-[11px] md:text-[13px] font-poppins uppercase text-burgundy-dark text-center">{name}</p>
+                    ))}
+                  </div>
+                )}
+              </div>
 
               {/* FLOWER BOY */}
               {flowerBoys && (
@@ -653,9 +667,19 @@ const Entourage = () => {
               {/* FLOWER GIRLS */}
               {flowerGirls && (
                 <div ref={flowerGirlsRef} className="flex flex-col gap-1 justify-center items-center">
-                  <p className="text-[10px] sm:text-[13px] md:text-[15px] caudex-bold mb-2 text-center uppercase" style={{ color: '#5A1E2A' }}>Flower Girls</p>
+                  <p className="text-[10px] sm:text-[13px] md:text-[15px] imperial-script-regular mb-1 text-center" style={{ color: '#5A1E2A' }}>Flower Girls</p>
+                  <p className="text-[10px] sm:text-[13px] md:text-[15px] caudex-bold mb-1 text-center uppercase" style={{ color: '#5A1E2A' }}>To Shower Our Path With Petals of Love</p>
                   {flowerGirls.names && flowerGirls.names.map((name, index) => (
                     <p key={index} className="text-[7.5px] sm:text-[11px] md:text-[13px] font-poppins uppercase text-burgundy-dark text-center">{name}</p>
+                  ))}
+                </div>
+              )}
+
+              {specialGuests && (
+                <div className="pt-8 flex flex-col gap-1 justify-center items-start">
+                  <p className="text-base sm:text-lg md:text-xl caudex-bold text-left" style={{ color: '#111111' }}>With the Special Guest:</p>
+                  {specialGuests.names?.map((name, index) => (
+                    <p key={index} className="text-sm sm:text-base md:text-lg caudex-bold text-left" style={{ color: '#111111' }}>{name}</p>
                   ))}
                 </div>
               )}

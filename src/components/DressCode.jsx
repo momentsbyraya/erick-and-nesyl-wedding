@@ -18,7 +18,7 @@ const DressCode = () => {
   const CREAM = '#F5F0E8'
   const BEIGE = '#D8C3A5'
   const GRAY = '#8B8F97'
-  const BLACK = '#000000'
+  const MAROON = '#800000'
   const NAVY = '#1F2A44'
   const WHITE = '#FFFFFF'
 
@@ -27,7 +27,7 @@ const DressCode = () => {
     CREAM,
     BEIGE,
     GRAY,
-    BLACK,
+    MAROON,
     NAVY,
     WHITE
   ]
@@ -37,7 +37,7 @@ const DressCode = () => {
     [CREAM]: 'Cream',
     [BEIGE]: 'Beige',
     [GRAY]: 'Gray',
-    [BLACK]: 'Black',
+    [MAROON]: 'Maroon',
     [NAVY]: 'Navy',
     [WHITE]: 'White'
   }

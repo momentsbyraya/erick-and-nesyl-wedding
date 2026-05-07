@@ -1,20 +1,20 @@
 {
   "mainDressCode": {
     "title": "Attire Guide",
-    "description": "Cream, beige, gray, black and navy (can add also touch of white)."
+    "description": "Cream, beige, gray, maroon and navy."
   },
   "sections": [
     {
       "title": "Principal Sponsors",
       "type": "text",
-      "description": "For Ninongs: Formal suit in black, gray, or navy. For Ninangs: Floor-length gown in cream, beige, gray, black, or navy (with a touch of white).",
+      "description": "For Ninongs: Formal suit in maroon, gray, or navy. For Ninangs: Floor-length gown in cream, beige, gray, maroon, or navy.",
       "image": "/assets/images/dresscode/sponsors.png"
     },
     {
       "title": "Guests",
       "type": "image",
-      "shortDescription": "Ladies: Modest dress. Men: Long sleeves in cream, beige, gray, black, or navy (touch of white allowed).",
-      "description": "Ladies: Modest dress. Men: Long sleeves in cream, beige, gray, black, or navy (touch of white allowed).",
+      "shortDescription": "Ladies: Modest dress. Men: Long sleeves in cream, beige, gray, maroon, or navy.",
+      "description": "Ladies: Modest dress. Men: Long sleeves in cream, beige, gray, maroon, or navy.",
       "image": "/assets/images/dresscode/guests.png"
     }
   ]

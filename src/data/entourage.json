@@ -1,120 +1,112 @@
 {
   "couple": {
-    "groom": { "name": "LOREM IPSUM" },
-    "bride": { "name": "DOLOR SIT" }
+    "groom": { "name": "PENARANDA" },
+    "bride": { "name": "ORTEGA" }
   },
   "parents": {
     "groom": {
-      "father": "Mr. Lorem Ipsum",
-      "mother": "Mrs. Dolor Sit"
+      "father": "Mr. Dominador Jr. Peñaranda",
+      "mother": "Mrs. Melinda Peñaranda"
     },
     "bride": {
-      "father": "",
-      "mother": "Amet Consectetur"
+      "father": "Mr. Sasyl Ortega",
+      "mother": "Mrs. Sylvia Ortega"
     }
   },
   "entourageList": [
     {
       "category": "Principal Sponsors",
       "ninong": [
-        "Mr. Lorem Ipsum",
-        "Mr. Dolor Sit",
-        "Mr. Amet Consectetur",
-        "Mr. Adipiscing Elit",
-        "Mr. Sed Do",
-        "Mr. Eiusmod Tempor",
-        "Mr. Incididunt Ut",
-        "Mr. Labore Et",
-        "Mr. Dolore Magna",
-        "Mr. Aliqua Enim",
-        "Mr. Minim Veniam",
-        "Mr. Quis Nostrud",
-        "Mr. Exercitation Ullamco",
-        "Mr. Laboris Nisi"
+        "Mr. Lenoel Jubilan",
+        "Mr. Joel Serran",
+        "Mr. Julan Gonzales",
+        "Mr. Antonio Macandog",
+        "Mr. Claud Bacay",
+        "Mr. Julien Zins",
+        "Mr. Ruben Fulgencio",
+        "Mr. Richard Rosende",
+        "Mr. Edison Ramero",
+        "Mr. Samuel Rodriguez",
+        "Mr. Alberto Ewayan",
+        "Mr. Rene Belenario"
       ],
       "ninang": [
-        "Ms. Lorem Ipsum",
-        "Mrs. Dolor Sit",
-        "Mrs. Amet Consectetur",
-        "Mrs. Adipiscing Elit",
-        "Mrs. Sed Do",
-        "Mrs. Eiusmod Tempor",
-        "Mrs. Incididunt Ut",
-        "Ms. Labore Et",
-        "Mrs. Dolore Magna",
-        "Mrs. Aliqua Enim",
-        "Mrs. Minim Veniam",
-        "Mrs. Quis Nostrud",
-        "Mrs. Exercitation Ullamco",
-        "Mrs. Laboris Nisi",
-        "Mrs. Ut Aliquip"
+        "Mrs. Nelma Jataas",
+        "Mrs. Alberta Juancho",
+        "Mrs. Sandra Bundac",
+        "Mrs. Gemma Taboc",
+        "Hon. Victoria Azores",
+        "Mrs. Katherine Quicson",
+        "Mrs. Judith Macmac",
+        "Mrs. Andrea Velasco",
+        "Mrs. Maribel Abina",
+        "Mrs. Melinda Jataas",
+        "Mrs. Marivel Montuerto",
+        "Mrs. Evelyn Rubia"
       ]
     },
     {
       "category": "Bestman",
-      "names": ["Mr. Commodo Consequat"]
+      "names": ["Mr. Jay Elizalde"]
     },
     {
       "category": "Maid of Honor",
-      "names": ["Ms. Duis Aute"]
+      "names": ["Ms. Juame Rose Taboc"]
     },
     {
       "category": "Candle Sponsors",
-      "names": ["Mr. Irure Dolor", "Mrs. Reprehenderit Voluptate"]
+      "names": ["Mr. Jayvee Vicera", "Ms. Angela Mae Macmac"]
     },
     {
       "category": "Cord Sponsors",
-      "names": ["Mr. Velit Esse", "Ms. Cillum Dolore"]
+      "names": ["Mr. Kent Cyrel Bacay", "Ms. Darren Mae Alvarez"]
     },
     {
       "category": "Veil Sponsors",
-      "names": ["Mr. Eu Fugiat", "Mrs. Nulla Pariatur"]
+      "names": ["Mr. Jaymark Gomo", "Ms. Christine Ortega"]
     },
     {
       "category": "Secondary Sponsors",
       "groomsmen": [
-        "Mr. Excepteur Sint",
-        "Mr. Occaecat Cupidatat",
-        "Mr. Non Proident",
-        "Sunt In Culpa",
-        "Qui Officia",
-        "Deserunt Mollit",
-        "Anim Id",
-        "Est Laborum"
+        "Mr. Rudy Conejos",
+        "Mr. Juda Valencia",
+        "Mr. Rodel Agripino",
+        "Mr. Jerwin Rebaño"
       ],
       "bridesmaid": [
-        "Ms. Lorem Uno",
-        "Ms. Ipsum Duo",
-        "Ms. Dolor Tres",
-        "Ms. Sit Quattuor",
-        "Ms. Amet Quinque",
-        "Ms. Consectetur Sex",
-        "Ms. Adipiscing Septem",
-        "Ms. Elit Octo"
+        "Ms. Jairah Peñaranda",
+        "Ms. Jalyn Scarlett Mabaquiao",
+        "Ms. Grecil Ewayan",
+        "Ms. Iren Jataas"
       ]
     },
     {
       "category": "Ring Bearer",
-      "names": ["Placeholder Alpha"]
+      "names": ["Aiden Jay Ortega"]
     },
     {
       "category": "Bible Bearer",
-      "names": ["Placeholder Beta"]
+      "names": ["Roden Fulgencio"]
     },
     {
       "category": "Coin Bearer",
-      "names": ["Placeholder Gamma"]
-    },
-    {
-      "category": "Flower Boys",
-      "names": ["Placeholder Delta"]
+      "names": ["Tristan Asher Rodriguez"]
     },
     {
       "category": "Flower Girls",
       "names": [
-        "Placeholder Epsilon",
-        "Placeholder Zeta",
-        "Placeholder Eta"
+        "Shanaiah Rodriguez",
+        "Maria Yochana Bacaltos",
+        "Keillah Gario",
+        "Xiazha Gadiano"
+      ]
+    },
+    {
+      "category": "Special Guests",
+      "names": [
+        "Calitang Teachers",
+        "Palawan Divers Team",
+        "Sunmai Bar/Restaurant Team"
       ]
     }
   ]
