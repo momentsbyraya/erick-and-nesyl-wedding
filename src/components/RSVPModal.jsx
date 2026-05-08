@@ -2,11 +2,18 @@ import React, { useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import { gsap } from 'gsap'
 import { X } from 'lucide-react'
+import { couple } from '../data'
 
 const RSVPModal = ({ isOpen, onClose }) => {
   const modalRef = useRef(null)
   const overlayRef = useRef(null)
   const contentRef = useRef(null)
+
+  const embedUrl =
+    couple.rsvpGoogleFormEmbedUrl ||
+    (couple.rsvpFormUrl
+      ? couple.rsvpFormUrl.replace('viewform', 'viewform?embedded=true')
+      : '')
 
   useEffect(() => {
     if (isOpen) {
@@ -102,11 +109,33 @@ const RSVPModal = ({ isOpen, onClose }) => {
         </header>
 
         <div className="flex-1 min-h-0 flex flex-col bg-white/95 backdrop-blur-sm">
-          <div className="w-full flex-1 min-h-0 flex items-center justify-center">
-            <p className="text-2xl sm:text-3xl font-foglihten text-burgundy-dark tracking-wide">
-              TO BE ADDED
-            </p>
-          </div>
+          {embedUrl ? (
+            <iframe
+              title="RSVP Form"
+              src={embedUrl}
+              className="w-full h-full min-h-0 border-0"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          ) : (
+            <div className="w-full flex-1 min-h-0 flex items-center justify-center px-6 text-center">
+              <div>
+                <p className="text-xl sm:text-2xl font-foglihten text-burgundy-dark tracking-wide mb-3">
+                  RSVP form unavailable
+                </p>
+                {couple.rsvpFormUrl && (
+                  <a
+                    href={couple.rsvpFormUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-sm sm:text-base underline text-burgundy-dark font-albert"
+                  >
+                    Open RSVP form in a new tab
+                  </a>
+                )}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>,

@@ -185,7 +185,7 @@ const DressCode = () => {
                 onClick={() => setActiveTooltip(activeTooltip === `guests-${index}` ? null : `guests-${index}`)}
               >
                 <div
-                  className="w-7 h-7 sm:w-9 sm:h-9 border border-gray-300 rounded cursor-pointer"
+                  className="w-7 h-7 sm:w-9 sm:h-9 rounded cursor-pointer shadow-sm"
                   style={{ backgroundColor: color }}
                 />
                 {activeTooltip === `guests-${index}` && (
